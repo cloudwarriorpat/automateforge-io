@@ -2,10 +2,11 @@ import Link from "next/link";
 import { Flame } from "lucide-react";
 
 const productLinks = [
-  { href: "/products#reliability", label: "Reliability & SRE" },
-  { href: "/products#delivery", label: "Delivery & CI/CD" },
-  { href: "/products#cost", label: "Cloud Cost & FinOps" },
-  { href: "/products#security", label: "Security & Hardening" },
+  { href: "/products#platform", label: "Developer Platform" },
+  { href: "/products#compliance", label: "Compliance & Governance" },
+  { href: "/products#delivery", label: "Engineering Delivery" },
+  { href: "/products#reliability", label: "Reliability & Observability" },
+  { href: "/products#ai", label: "AI Infrastructure" },
 ];
 
 const companyLinks = [
@@ -32,9 +33,9 @@ export default function Footer() {
               </span>
             </Link>
             <p className="mt-3 text-sm leading-relaxed text-ash-500">
-              Productized DevOps packages.
+              Platform engineering, productized.
               <br />
-              Fixed scope. Fixed price.
+              Fixed scope. No consulting fog.
               <br />
               Results in days.
             </p>
@@ -104,7 +105,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} AutomateForge. All rights reserved.
           </p>
           <p className="text-xs text-ash-500">
-            Built for engineers, by engineers.
+            Platform engineering for European tech teams.
           </p>
         </div>
       </div>

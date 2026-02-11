@@ -5,27 +5,31 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "AutomateForge — Productized DevOps Packages",
+    default: "AutomateForge — Platform Engineering, Productized",
     template: "%s | AutomateForge",
   },
   description:
-    "Fixed-scope DevOps packages that ship in days. CI/CD pipelines, SRE foundations, cloud cost optimization, and security hardening. No consulting fog.",
+    "We build internal developer platforms, automate EU compliance (NIS2, DORA, EU AI Act), and accelerate engineering delivery. Fixed scope. No consulting fog.",
   keywords: [
+    "platform engineering",
+    "internal developer platform",
+    "NIS2 compliance",
+    "DORA compliance",
+    "EU AI Act",
     "DevOps",
     "SRE",
-    "CI/CD",
-    "cloud cost optimization",
-    "FinOps",
+    "golden paths",
+    "Backstage",
+    "Crossplane",
     "Kubernetes",
-    "platform engineering",
+    "GitOps",
     "productized services",
-    "infrastructure automation",
   ],
   authors: [{ name: "AutomateForge" }],
   openGraph: {
-    title: "AutomateForge — Productized DevOps Packages",
+    title: "AutomateForge — Platform Engineering, Productized",
     description:
-      "Fixed-scope DevOps packages that ship in days. CI/CD pipelines, SRE foundations, cloud cost optimization, and security hardening.",
+      "Internal developer platforms, EU compliance automation, and engineering delivery — fixed scope, no consulting fog.",
     url: "https://automateforge.io",
     siteName: "AutomateForge",
     locale: "en_US",
@@ -33,9 +37,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AutomateForge — Productized DevOps Packages",
+    title: "AutomateForge — Platform Engineering, Productized",
     description:
-      "Fixed-scope DevOps packages that ship in days. No consulting fog.",
+      "Internal developer platforms, EU compliance automation, and engineering delivery. Fixed scope.",
   },
   robots: {
     index: true,

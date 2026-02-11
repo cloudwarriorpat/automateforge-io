@@ -7,26 +7,28 @@ import {
   categoryMeta,
   type ProductCategory,
 } from "@/data/products";
-import { Shield, Rocket, TrendingDown, Lock, CheckCircle } from "lucide-react";
+import { Layers, ShieldCheck, Rocket, Activity, Brain, CheckCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Products — Productized DevOps Packages",
+  title: "Products — Platform Engineering Packages",
   description:
-    "Browse all AutomateForge packages: SRE foundations, CI/CD pipelines, cloud cost optimization, security hardening, and platform engineering. Fixed scope, fixed price.",
+    "Browse all AutomateForge packages: developer platforms, EU compliance automation, engineering delivery, observability, and AI infrastructure. Fixed scope, no consulting fog.",
 };
 
 const categoryOrder: ProductCategory[] = [
-  "reliability",
+  "platform",
+  "compliance",
   "delivery",
-  "cost",
-  "security",
+  "reliability",
+  "ai",
 ];
 
 const categoryIcons: Record<ProductCategory, React.ReactNode> = {
-  reliability: <Shield className="h-5 w-5" />,
+  platform: <Layers className="h-5 w-5" />,
+  compliance: <ShieldCheck className="h-5 w-5" />,
   delivery: <Rocket className="h-5 w-5" />,
-  cost: <TrendingDown className="h-5 w-5" />,
-  security: <Lock className="h-5 w-5" />,
+  reliability: <Activity className="h-5 w-5" />,
+  ai: <Brain className="h-5 w-5" />,
 };
 
 export default function ProductsPage() {
@@ -45,16 +47,16 @@ export default function ProductsPage() {
           </p>
         </div>
 
-        {/* Tier legend */}
+        {/* Tier legend — no pricing */}
         <div className="mt-8 flex flex-wrap gap-4">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-mint-500/20 bg-mint-500/5 px-3 py-1 text-xs font-medium text-mint-500">
-            Entry — 1–2 days — €690–€1,290
+            Entry — Quick wins in 1–2 days
           </span>
           <span className="inline-flex items-center gap-1.5 rounded-full border border-steel-500/20 bg-steel-500/5 px-3 py-1 text-xs font-medium text-steel-400">
-            Core — 3–7 days — €3,900–€5,900
+            Core — Deep impact in 3–7 days
           </span>
           <span className="inline-flex items-center gap-1.5 rounded-full border border-forge-500/20 bg-forge-500/5 px-3 py-1 text-xs font-medium text-forge-400">
-            Premium — 8–15 days — €8,900–€14,900
+            Premium — Full transformation in 8–15 days
           </span>
         </div>
 
@@ -90,8 +92,8 @@ export default function ProductsPage() {
             Ongoing Retainers
           </h2>
           <p className="mt-2 text-base text-ash-400">
-            Monthly packages for teams that need continuous DevOps and SRE
-            support without a full-time hire.
+            Monthly partnerships for teams that need continuous platform
+            engineering support without a full-time hire.
           </p>
 
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -102,11 +104,6 @@ export default function ProductsPage() {
               >
                 <h3 className="text-lg font-bold text-ash-100">{r.name}</h3>
                 <p className="mt-1 text-sm text-ash-400">{r.tagline}</p>
-
-                <p className="mt-4 text-2xl font-bold text-forge-400">
-                  {r.priceEur}
-                </p>
-                <p className="text-xs text-ash-500">{r.pricePln}</p>
 
                 <ul className="mt-5 space-y-2.5 flex-1">
                   {r.includes.map((item) => (

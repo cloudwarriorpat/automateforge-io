@@ -9,7 +9,6 @@ import {
   FileInput,
   Target,
   XCircle,
-  Plus,
 } from "lucide-react";
 import FAQ from "@/components/FAQ";
 import CTASection from "@/components/CTASection";
@@ -85,18 +84,10 @@ export default async function ProductDetailPage({
             {product.tagline}
           </p>
 
-          {/* Price + timeline bar */}
-          <div className="mt-6 flex flex-wrap items-center gap-6">
-            <div>
-              <p className="text-2xl font-bold text-ash-100">
-                {product.priceEur}
-              </p>
-              <p className="text-xs text-ash-500">{product.pricePln}</p>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-ash-400">
-              <Clock className="h-4 w-4 text-forge-500" />
-              {product.timeline}
-            </div>
+          {/* Timeline */}
+          <div className="mt-6 flex items-center gap-2 text-sm text-ash-400">
+            <Clock className="h-4 w-4 text-forge-500" />
+            {product.timeline}
           </div>
         </div>
 
@@ -194,29 +185,6 @@ export default async function ProductDetailPage({
             ))}
           </ul>
         </section>
-
-        {/* Add-ons */}
-        {product.addOns.length > 0 && (
-          <section className="mt-10">
-            <h2 className="flex items-center gap-2 text-lg font-bold text-ash-100">
-              <Plus className="h-5 w-5 text-forge-400" />
-              Optional add-ons
-            </h2>
-            <div className="mt-4 space-y-3">
-              {product.addOns.map((addon) => (
-                <div
-                  key={addon.name}
-                  className="flex items-center justify-between rounded-lg border border-slab-700 bg-slab-900/50 px-4 py-3"
-                >
-                  <span className="text-sm text-ash-300">{addon.name}</span>
-                  <span className="text-sm font-semibold text-forge-400">
-                    {addon.price}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
 
         {/* FAQ */}
         {product.faq.length > 0 && (

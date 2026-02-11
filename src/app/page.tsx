@@ -1,14 +1,15 @@
 import Link from "next/link";
 import {
   ArrowRight,
-  Shield,
+  Layers,
+  ShieldCheck,
   Rocket,
-  TrendingDown,
-  Lock,
+  Activity,
+  Brain,
   Clock,
   AlertTriangle,
-  DollarSign,
-  Bug,
+  FileWarning,
+  Gauge,
   FileCheck,
   Zap,
   Handshake,
@@ -30,59 +31,61 @@ import {
 
 const homeFaq = [
   {
-    q: "How is this different from hiring a DevOps consultant?",
-    a: "Consultants scope as they go. We define scope upfront with fixed deliverables, fixed timelines, and fixed prices. You know exactly what you get before you pay.",
+    q: "How is this different from hiring a platform engineering consultancy?",
+    a: "Most consultancies sell time-and-materials. We sell fixed-scope packages with defined deliverables and timelines. You know exactly what you get before we start — no open-ended discovery, no scope creep.",
   },
   {
     q: "What if we need something custom?",
-    a: "Start with a free scoping call. If your needs don't fit a standard package, we'll either build a custom quote or tell you honestly if we're not the right fit.",
+    a: "Start with a free scoping call. If your needs don't fit a standard package, we'll build a custom scope — or tell you honestly if we're not the right fit.",
   },
   {
     q: "Do you need admin access to our cloud accounts?",
-    a: "It depends on the package. Read-only access is sufficient for audits and assessments. Implementation packages require appropriate write access — always scoped to what's needed.",
+    a: "It depends on the package. Assessments need read-only access. Implementation packages require appropriate write access — always scoped to what's needed and revoked after delivery.",
   },
   {
-    q: "What cloud providers and tools do you support?",
-    a: "AWS, GCP, and Azure. For tooling: Terraform, Kubernetes, GitHub Actions, GitLab CI, ArgoCD, Prometheus, Grafana, Datadog, PagerDuty, and more. If you use something specific, ask us.",
+    q: "What tools and platforms do you work with?",
+    a: "Kubernetes, Backstage, Crossplane, ArgoCD, Terraform/OpenTofu, GitHub Actions, GitLab CI, Prometheus, Grafana, OPA, Kyverno, and more. We're vendor-neutral and open-source-first.",
   },
   {
-    q: "How do we handle security and data privacy?",
-    a: "We work within your environment. We don't export data. Access is scoped and temporary. We're happy to sign NDAs and follow your security policies.",
+    q: "How do you handle security and data privacy?",
+    a: "We work within your environment. We don't export data. Access is scoped and temporary. We sign NDAs and follow your security policies. We're EU-based and GDPR-conscious.",
+  },
+  {
+    q: "What about NIS2, DORA, and EU AI Act compliance?",
+    a: "This is a core speciality. We implement the technical controls — policy-as-code, audit trails, incident automation, asset inventories — that these regulations require. We don't do legal advisory, but we make the engineering side ready.",
   },
   {
     q: "What happens after delivery?",
-    a: "Every package includes documentation and a walkthrough. You own everything we build. For ongoing support, we offer retainer packages.",
-  },
-  {
-    q: "Can we start with a small package and scale up?",
-    a: "That's exactly how we recommend it. Start with an Entry package to validate the fit, then move to Core or Premium if needed.",
+    a: "Every package includes documentation, runbooks, and a walkthrough. You own everything. For ongoing support, we offer monthly retainer packages.",
   },
   {
     q: "Do you work with startups or only enterprises?",
-    a: "Our sweet spot is teams of 5-100 engineers. Startups, scale-ups, and mid-size engineering orgs. If you run production infrastructure, we can help.",
+    a: "Our sweet spot is engineering teams of 20–200. Scale-ups, mid-market, and fast-growing companies that need platform engineering without building a full team from scratch.",
   },
   {
     q: "What's your guarantee?",
-    a: "If we don't deliver what's defined in the scope document, you don't pay for the undelivered items. Every package has measurable Definition of Done criteria.",
+    a: "Every package has a measurable Definition of Done. If we don't deliver what's defined in the scope document, you don't pay for the undelivered items.",
   },
   {
-    q: "Are prices in EUR or can we pay in other currencies?",
-    a: "Prices are listed in EUR and PLN. We can invoice in either currency. Payment terms: 50% upfront, 50% on delivery for packages over €3,000.",
+    q: "Where are you based?",
+    a: "We're based in the EU (Poland) and work with companies across Europe. All engagements are remote-first with async communication and scheduled syncs.",
   },
 ];
 
 const categoryOrder: ProductCategory[] = [
-  "reliability",
+  "platform",
+  "compliance",
   "delivery",
-  "cost",
-  "security",
+  "reliability",
+  "ai",
 ];
 
 const categoryIcons: Record<ProductCategory, React.ReactNode> = {
-  reliability: <Shield className="h-6 w-6" />,
+  platform: <Layers className="h-6 w-6" />,
+  compliance: <ShieldCheck className="h-6 w-6" />,
   delivery: <Rocket className="h-6 w-6" />,
-  cost: <TrendingDown className="h-6 w-6" />,
-  security: <Lock className="h-6 w-6" />,
+  reliability: <Activity className="h-6 w-6" />,
+  ai: <Brain className="h-6 w-6" />,
 };
 
 export default function Home() {
@@ -92,65 +95,55 @@ export default function Home() {
     <div className="relative">
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="relative overflow-hidden px-4 pt-20 pb-24 sm:px-6 sm:pt-28 sm:pb-32">
-        {/* Decorative blobs */}
         <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 h-[600px] w-[800px] rounded-full bg-forge-500/[0.04] blur-[120px]" />
         <div className="pointer-events-none absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-steel-500/[0.03] blur-[100px]" />
 
         <div className="relative mx-auto max-w-4xl text-center">
-          {/* Badge */}
           <div className="inline-flex items-center gap-2 rounded-full border border-forge-500/20 bg-forge-500/5 px-4 py-1.5">
             <Zap className="h-3.5 w-3.5 text-forge-500" />
             <span className="text-xs font-semibold tracking-wide text-forge-400">
-              Productized DevOps — Fixed Scope, Fixed Price
+              Platform Engineering, Productized
             </span>
           </div>
 
-          {/* Headline */}
           <h1 className="mt-8 text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-            <span className="gradient-text">Ship Faster. Break Nothing.</span>
+            <span className="gradient-text">Build Platforms. Automate Compliance.</span>
             <br />
-            <span className="gradient-text-forge">Cut Cloud Waste.</span>
+            <span className="gradient-text-forge">Ship With Confidence.</span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ash-400">
-            Productized DevOps packages that deliver results in days, not months.
-            CI/CD pipelines, SRE foundations, cost optimization, and security
-            hardening — all with fixed scope and fixed price.
+            We build internal developer platforms, automate EU compliance
+            (NIS2, DORA, EU AI Act), and accelerate engineering delivery.
+            Fixed-scope packages that ship in days — not months of consulting.
           </p>
 
-          {/* CTAs */}
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/products"
               className="group inline-flex items-center gap-2 rounded-lg bg-forge-500 px-7 py-3.5 text-sm font-semibold text-slab-950 shadow-lg shadow-forge-500/20 transition-all hover:bg-forge-400 hover:shadow-forge-400/25"
             >
-              See Our Packages
+              Explore Our Packages
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 rounded-lg border border-slab-600 px-7 py-3.5 text-sm font-medium text-ash-300 transition-colors hover:border-slab-500 hover:text-ash-100"
             >
-              Book a Free Call
+              Book a Scoping Call
             </Link>
           </div>
 
-          {/* Trust bar */}
           <div className="mx-auto mt-16 grid max-w-2xl grid-cols-2 gap-6 sm:grid-cols-4">
             {[
-              { icon: <Clock className="h-5 w-5" />, label: "1–15 day delivery" },
-              { icon: <FileCheck className="h-5 w-5" />, label: "Fixed scope & price" },
+              { icon: <Clock className="h-5 w-5" />, label: "1–25 day delivery" },
+              { icon: <FileCheck className="h-5 w-5" />, label: "Fixed scope, always" },
               { icon: <Terminal className="h-5 w-5" />, label: "Everything as Code" },
               { icon: <Handshake className="h-5 w-5" />, label: "You own it all" },
             ].map((item) => (
-              <div
-                key={item.label}
-                className="flex flex-col items-center gap-2 text-center"
-              >
+              <div key={item.label} className="flex flex-col items-center gap-2 text-center">
                 <div className="text-forge-500">{item.icon}</div>
-                <span className="text-xs font-medium text-ash-400">
-                  {item.label}
-                </span>
+                <span className="text-xs font-medium text-ash-400">{item.label}</span>
               </div>
             ))}
           </div>
@@ -162,44 +155,39 @@ export default function Home() {
         <div className="mx-auto max-w-5xl">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-ash-100 sm:text-3xl">
-              DevOps Chaos Is Costing You
+              The Platform Gap Is Costing You
             </h2>
             <p className="mt-3 text-base text-ash-400">
-              These problems compound. Every week without a fix costs more than the fix itself.
+              Without a real platform strategy, these problems compound every quarter.
             </p>
           </div>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
+                icon: <Gauge className="h-5 w-5" />,
+                stat: "75% of devs",
+                text: "lose 6+ hours/week to tool fragmentation and manual processes",
+              },
+              {
+                icon: <FileWarning className="h-5 w-5" />,
+                stat: "NIS2 & DORA",
+                text: "enforcement is live — fines up to €10M or 2% of global revenue",
+              },
+              {
                 icon: <AlertTriangle className="h-5 w-5" />,
-                stat: "10+ hrs/week",
-                text: "wasted on manual deployments and firefighting",
-              },
-              {
-                icon: <DollarSign className="h-5 w-5" />,
-                stat: "32% average",
-                text: "cloud overspend from orphaned and oversized resources",
-              },
-              {
-                icon: <Clock className="h-5 w-5" />,
                 stat: "4+ hours MTTR",
-                text: "without structured runbooks and incident response",
+                text: "without structured runbooks and incident response workflows",
               },
               {
-                icon: <Bug className="h-5 w-5" />,
-                stat: "60% of breaches",
-                text: "stem from infrastructure misconfigurations",
+                icon: <Brain className="h-5 w-5" />,
+                stat: "94% of orgs",
+                text: "see AI as essential to platform success but lack the infrastructure",
               },
             ].map((item) => (
-              <div
-                key={item.stat}
-                className="rounded-xl border border-slab-700 bg-slab-900/50 p-5"
-              >
+              <div key={item.stat} className="rounded-xl border border-slab-700 bg-slab-900/50 p-5">
                 <div className="text-ember-500">{item.icon}</div>
-                <p className="mt-3 text-xl font-bold text-ash-100">
-                  {item.stat}
-                </p>
+                <p className="mt-3 text-xl font-bold text-ash-100">{item.stat}</p>
                 <p className="mt-1 text-sm text-ash-400">{item.text}</p>
               </div>
             ))}
@@ -207,20 +195,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Product Buckets ──────────────────────────────────── */}
+      {/* ── Product Categories ───────────────────────────────── */}
       <section id="categories" className="px-4 py-20 sm:px-6">
         <div className="mx-auto max-w-5xl">
           <div className="text-center">
             <h2 className="text-2xl font-bold text-ash-100 sm:text-3xl">
-              Four Ways We Forge Your Infrastructure
+              Five Pillars of Platform Engineering
             </h2>
             <p className="mt-3 text-base text-ash-400">
-              Every package has a fixed scope, clear deliverables, and a
-              measurable Definition of Done.
+              Every package has a fixed scope, clear deliverables, and a measurable Definition of Done.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {categoryOrder.map((cat) => {
               const meta = categoryMeta[cat];
               const count = products.filter((p) => p.category === cat).length;
@@ -238,9 +225,7 @@ export default function Home() {
                       <h3 className="text-base font-bold text-ash-100 group-hover:text-forge-400 transition-colors">
                         {meta.label}
                       </h3>
-                      <p className="text-xs text-ash-500">
-                        {count} packages
-                      </p>
+                      <p className="text-xs text-ash-500">{count} packages</p>
                     </div>
                   </div>
                   <p className="mt-3 text-sm leading-relaxed text-ash-400">
@@ -278,14 +263,14 @@ export default function Home() {
                 step: "02",
                 title: "Forge",
                 description:
-                  "Our team executes. You get daily async updates. Typical delivery: 1–15 business days depending on the package.",
+                  "Our team executes. You get daily async updates. Typical delivery: 1–25 business days depending on the package.",
                 icon: <Zap className="h-5 w-5" />,
               },
               {
                 step: "03",
                 title: "Ship",
                 description:
-                  "Handoff with full documentation, runbooks, and a live walkthrough. You own everything we build. No lock-in.",
+                  "Handoff with full documentation, runbooks, and a live walkthrough. You own everything. No lock-in, no recurring dependency.",
                 icon: <Rocket className="h-5 w-5" />,
               },
             ].map((item) => (
@@ -298,12 +283,8 @@ export default function Home() {
                     {item.icon}
                   </div>
                 </div>
-                <h3 className="mt-4 text-lg font-bold text-ash-100">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-ash-400">
-                  {item.description}
-                </p>
+                <h3 className="mt-4 text-lg font-bold text-ash-100">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ash-400">{item.description}</p>
               </div>
             ))}
           </div>
@@ -316,10 +297,10 @@ export default function Home() {
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <h2 className="text-2xl font-bold text-ash-100 sm:text-3xl">
-                Most Popular Packages
+                Flagship Packages
               </h2>
               <p className="mt-2 text-base text-ash-400">
-                The fastest path from pain to production fix.
+                Where most of our clients start.
               </p>
             </div>
             <Link
@@ -347,8 +328,7 @@ export default function Home() {
               Built by Operators, Not Consultants
             </h2>
             <p className="mt-3 text-base text-ash-400">
-              We run production infrastructure ourselves. Every package is
-              tested on real environments before we offer it.
+              We run production platforms ourselves. Every package is tested on real infrastructure before we offer it.
             </p>
           </div>
 
@@ -356,98 +336,27 @@ export default function Home() {
             {[
               {
                 icon: <Terminal className="h-6 w-6" />,
-                title: "Open Tooling",
+                title: "Open-Source First",
                 description:
-                  "Terraform, Kubernetes, GitHub Actions, Prometheus, Grafana, ArgoCD. No proprietary black boxes. No vendor lock-in.",
+                  "Backstage, Crossplane, ArgoCD, Kubernetes, Terraform/OpenTofu, Prometheus, OPA. No proprietary lock-in. Aligned with EU digital sovereignty.",
               },
               {
                 icon: <CheckCircle className="h-6 w-6" />,
-                title: "Battle-Tested Patterns",
+                title: "EU Compliance Native",
                 description:
-                  "Every template and module comes from real production use. We ship what we run ourselves.",
+                  "NIS2, DORA, EU AI Act — baked into every platform deliverable. We build platforms that are compliant by default, not by afterthought.",
               },
               {
                 icon: <Users className="h-6 w-6" />,
                 title: "Knowledge Transfer",
                 description:
-                  "Every engagement includes documentation, walkthroughs, and training. Your team owns the outcome, not just the artifact.",
+                  "Every engagement includes documentation, walkthroughs, and training. Your team owns the outcome and can operate independently.",
               },
             ].map((item) => (
-              <div
-                key={item.title}
-                className="rounded-xl border border-slab-700 bg-slab-900/50 p-6"
-              >
+              <div key={item.title} className="rounded-xl border border-slab-700 bg-slab-900/50 p-6">
                 <div className="text-forge-500">{item.icon}</div>
-                <h3 className="mt-4 text-base font-bold text-ash-100">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-ash-400">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Pricing Approach ─────────────────────────────────── */}
-      <section className="px-4 py-20 sm:px-6">
-        <div className="mx-auto max-w-5xl">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-ash-100 sm:text-3xl">
-              Transparent Pricing. No Hourly Rates.
-            </h2>
-            <p className="mt-3 text-base text-ash-400">
-              Every package has a fixed price. You know the cost before we start.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-6 sm:grid-cols-3">
-            {[
-              {
-                tier: "Entry",
-                range: "€690 – €1,290",
-                timeline: "1–2 days",
-                description:
-                  "Quick wins and assessments. Perfect for validating fit before committing to larger engagements.",
-                color: "border-mint-500/30 bg-mint-500/5",
-                textColor: "text-mint-500",
-              },
-              {
-                tier: "Core",
-                range: "€3,900 – €5,900",
-                timeline: "3–7 days",
-                description:
-                  "Full implementations. SRE kits, observability stacks, GitOps workflows, and security baselines.",
-                color: "border-steel-500/30 bg-steel-500/5",
-                textColor: "text-steel-400",
-              },
-              {
-                tier: "Premium",
-                range: "€8,900 – €14,900",
-                timeline: "8–15 days",
-                description:
-                  "Deep transformations. Release engineering overhauls, platform builders, and infrastructure optimization sprints.",
-                color: "border-forge-500/30 bg-forge-500/5",
-                textColor: "text-forge-400",
-              },
-            ].map((item) => (
-              <div
-                key={item.tier}
-                className={`rounded-xl border p-6 ${item.color}`}
-              >
-                <span
-                  className={`text-xs font-bold uppercase tracking-wider ${item.textColor}`}
-                >
-                  {item.tier}
-                </span>
-                <p className="mt-3 text-2xl font-bold text-ash-100">
-                  {item.range}
-                </p>
-                <p className="mt-1 text-xs text-ash-500">{item.timeline}</p>
-                <p className="mt-4 text-sm leading-relaxed text-ash-400">
-                  {item.description}
-                </p>
+                <h3 className="mt-4 text-base font-bold text-ash-100">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ash-400">{item.description}</p>
               </div>
             ))}
           </div>
@@ -465,16 +374,13 @@ export default function Home() {
               </h3>
               <ul className="mt-4 space-y-3">
                 {[
-                  "Run production infrastructure on AWS, GCP, or Azure",
-                  "Have an engineering team of 5–100 developers",
-                  "Need specific DevOps outcomes, not open-ended consulting",
-                  "Value fixed scope and predictable pricing",
-                  "Want to own the deliverables and avoid vendor lock-in",
+                  "Have 20–200 engineers and need platform engineering capacity",
+                  "Face NIS2, DORA, or EU AI Act compliance requirements",
+                  "Want an internal developer platform but can't build one alone",
+                  "Need specific outcomes, not open-ended consulting",
+                  "Run on Kubernetes, AWS, GCP, or Azure",
                 ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex gap-2 text-sm text-ash-300"
-                  >
+                  <li key={item} className="flex gap-2 text-sm text-ash-300">
                     <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-mint-500" />
                     {item}
                   </li>
@@ -492,13 +398,10 @@ export default function Home() {
                   "Need a 6-month RFP process before starting",
                   "Don't have existing cloud infrastructure yet",
                   "Want an embedded full-time hire disguised as consulting",
-                  "Need compliance certification (SOC2/ISO) — we build, not certify",
+                  "Need certification (SOC2/ISO) — we build, not certify",
                   "Expect 24/7 managed services (we build, you run)",
                 ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex gap-2 text-sm text-ash-300"
-                  >
+                  <li key={item} className="flex gap-2 text-sm text-ash-300">
                     <XCircle className="mt-0.5 h-4 w-4 shrink-0 text-ember-500" />
                     {item}
                   </li>
@@ -519,7 +422,10 @@ export default function Home() {
       {/* ── Final CTA ────────────────────────────────────────── */}
       <section className="px-4 py-20 sm:px-6">
         <div className="mx-auto max-w-4xl">
-          <CTASection />
+          <CTASection
+            headline="Ready to Build a Platform That Works?"
+            description="Book a free 30-minute scoping call. We'll assess your biggest gap and map it to a fixed-scope package — no commitment, no consulting fog."
+          />
         </div>
       </section>
     </div>

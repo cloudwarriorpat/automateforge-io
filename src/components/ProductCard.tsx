@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Clock } from "lucide-react";
 import type { Product } from "@/data/products";
 
 const tierColors: Record<string, string> = {
@@ -9,10 +9,11 @@ const tierColors: Record<string, string> = {
 };
 
 const categoryColors: Record<string, string> = {
-  reliability: "text-steel-400",
-  delivery: "text-forge-400",
-  cost: "text-mint-500",
-  security: "text-ash-300",
+  platform: "text-forge-400",
+  compliance: "text-steel-400",
+  delivery: "text-mint-500",
+  reliability: "text-ash-300",
+  ai: "text-forge-400",
 };
 
 export default function ProductCard({ product }: { product: Product }) {
@@ -41,11 +42,9 @@ export default function ProductCard({ product }: { product: Product }) {
 
       {/* Meta */}
       <div className="mt-auto flex items-end justify-between pt-6">
-        <div className="space-y-1">
-          <p className="text-xs text-ash-500">{product.timeline}</p>
-          <p className="text-base font-bold text-ash-100">
-            {product.priceEur}
-          </p>
+        <div className="flex items-center gap-1.5 text-xs text-ash-500">
+          <Clock className="h-3.5 w-3.5" />
+          {product.timeline}
         </div>
         <ArrowRight className="h-4 w-4 text-ash-500 transition-transform group-hover:translate-x-1 group-hover:text-forge-500" />
       </div>

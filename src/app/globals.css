@@ -1,37 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  /* Forge Design System — AutomateForge.io */
+  /* AutomateForge.io Design System — Cool Cyan */
 
-  /* Forge Orange Accent */
-  --color-forge-400: #FB923C;
-  --color-forge-500: #F97316;
-  --color-forge-600: #EA580C;
-  --color-forge-700: #C2410C;
+  /* Primary Accent — Cyan/Teal */
+  --color-forge-400: #22D3EE;
+  --color-forge-500: #06B6D4;
+  --color-forge-600: #0891B2;
+  --color-forge-700: #0E7490;
 
-  /* Clean Blue Secondary */
-  --color-steel-400: #60A5FA;
-  --color-steel-500: #3B82F6;
-  --color-steel-600: #2563EB;
+  /* Secondary — Violet */
+  --color-steel-400: #C084FC;
+  --color-steel-500: #A855F7;
+  --color-steel-600: #9333EA;
 
-  /* Surfaces */
-  --color-slab-950: #0B0F1A;
-  --color-slab-900: #111827;
-  --color-slab-800: #1A2236;
-  --color-slab-700: #1E293B;
-  --color-slab-600: #334155;
-  --color-slab-500: #475569;
+  /* Surfaces — Neutral zinc-based dark */
+  --color-slab-950: #09090B;
+  --color-slab-900: #18181B;
+  --color-slab-800: #27272A;
+  --color-slab-700: #3F3F46;
+  --color-slab-600: #52525B;
+  --color-slab-500: #71717A;
 
-  /* Text */
-  --color-ash-100: #F1F5F9;
-  --color-ash-200: #E2E8F0;
-  --color-ash-300: #CBD5E1;
-  --color-ash-400: #94A3B8;
-  --color-ash-500: #64748B;
+  /* Text — Neutral zinc */
+  --color-ash-100: #FAFAFA;
+  --color-ash-200: #E4E4E7;
+  --color-ash-300: #D4D4D8;
+  --color-ash-400: #A1A1AA;
+  --color-ash-500: #71717A;
 
   /* Status */
-  --color-ember-500: #EF4444;
-  --color-mint-500: #22C55E;
+  --color-ember-500: #F43F5E;
+  --color-mint-500: #4ADE80;
 
   /* Font families */
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -45,31 +45,31 @@ body {
   overflow-x: hidden;
 }
 
-/* Forge Glow Effects */
+/* Glow Effects — Cyan */
 .forge-glow {
-  box-shadow: 0 0 40px rgba(249, 115, 22, 0.12), 0 0 80px rgba(249, 115, 22, 0.04);
+  box-shadow: 0 0 40px rgba(6, 182, 212, 0.12), 0 0 80px rgba(6, 182, 212, 0.04);
 }
 
 .forge-glow-strong {
-  box-shadow: 0 0 20px rgba(249, 115, 22, 0.25), 0 0 60px rgba(249, 115, 22, 0.08);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.25), 0 0 60px rgba(6, 182, 212, 0.08);
 }
 
 .forge-text-glow {
-  text-shadow: 0 0 30px rgba(249, 115, 22, 0.25);
+  text-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
 }
 
-/* Gradient Mesh Background — distinct from .pl grid */
+/* Gradient Mesh Background */
 .mesh-bg {
   background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249, 115, 22, 0.06), transparent),
-    radial-gradient(ellipse 50% 50% at 0% 50%, rgba(59, 130, 246, 0.04), transparent),
-    radial-gradient(ellipse 50% 50% at 100% 80%, rgba(249, 115, 22, 0.03), transparent),
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(6, 182, 212, 0.07), transparent),
+    radial-gradient(ellipse 50% 50% at 0% 50%, rgba(168, 85, 247, 0.04), transparent),
+    radial-gradient(ellipse 50% 50% at 100% 80%, rgba(6, 182, 212, 0.03), transparent),
     var(--color-slab-950);
 }
 
 /* Glass Card */
 .glass-card {
-  background: rgba(17, 24, 39, 0.7);
+  background: rgba(24, 24, 27, 0.7);
   backdrop-filter: blur(16px);
   border: 1px solid var(--color-slab-700);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -77,7 +77,7 @@ body {
 
 .glass-card:hover {
   border-color: var(--color-slab-600);
-  box-shadow: 0 0 30px rgba(249, 115, 22, 0.06);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.08);
 }
 
 /* Gradient text */
@@ -114,6 +114,6 @@ html {
 
 /* Selection color */
 ::selection {
-  background: rgba(249, 115, 22, 0.3);
+  background: rgba(6, 182, 212, 0.3);
   color: var(--color-ash-100);
 }

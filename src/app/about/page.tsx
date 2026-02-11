@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Flame, Target, Zap, Shield, Users } from "lucide-react";
+import { ArrowRight, Flame, Target, Zap, Shield, Users, Globe, Scale } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "AutomateForge is a productized DevOps studio. We deliver fixed-scope infrastructure packages to engineering teams worldwide.",
+    "AutomateForge is a productized platform engineering studio. We deliver fixed-scope infrastructure and compliance packages to European engineering teams.",
 };
 
 export default function AboutPage() {
@@ -21,12 +21,13 @@ export default function AboutPage() {
             </span>
           </div>
           <h1 className="mt-6 text-3xl font-extrabold text-ash-100 sm:text-4xl">
-            We build infrastructure you can trust.
+            Platform engineering you can ship with.
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-ash-400">
-            AutomateForge is a productized DevOps studio. We deliver
-            fixed-scope infrastructure packages to engineering teams that need
-            results in days, not months.
+            AutomateForge is a productized platform engineering studio. We
+            deliver fixed-scope packages to European engineering teams that need
+            developer platforms, compliance automation, and production-grade
+            infrastructure — in days, not months.
           </p>
         </div>
 
@@ -37,19 +38,21 @@ export default function AboutPage() {
           </h2>
           <div className="mt-4 space-y-4 text-base leading-relaxed text-ash-400">
             <p>
-              Most DevOps engagements follow the same pattern: weeks of
+              European engineering teams face a unique challenge: build fast,
+              stay compliant, and do it all with lean teams. NIS2, DORA, the
+              EU AI Act — regulatory pressure is rising while talent remains
+              scarce.
+            </p>
+            <p>
+              Most consulting engagements follow the same pattern: weeks of
               discovery, months of implementation, scope that expands with
               every meeting, and bills that grow faster than progress.
             </p>
             <p>
-              We built AutomateForge because we believe infrastructure work
-              can be scoped, priced, and delivered like any other engineering
-              project. Fixed inputs. Fixed outputs. Fixed timeline.
-            </p>
-            <p>
-              Every package we offer exists because we&apos;ve built it for
-              real production environments. We package what works, document it
-              thoroughly, and deliver it fast.
+              We built AutomateForge because platform engineering work can be
+              scoped, delivered, and handed off like any other engineering
+              project. Fixed inputs. Fixed outputs. Fixed timeline. You keep
+              everything we build.
             </p>
           </div>
         </section>
@@ -65,7 +68,7 @@ export default function AboutPage() {
                 icon: <Target className="h-5 w-5" />,
                 title: "Fixed scope, always",
                 description:
-                  "Every engagement starts with a scope document. What's in, what's out, what you'll get, and when. No surprises.",
+                  "Every engagement starts with a scope document. What's in, what's out, what you'll get, and when. No surprises, no consulting fog.",
               },
               {
                 icon: <Zap className="h-5 w-5" />,
@@ -84,6 +87,18 @@ export default function AboutPage() {
                 title: "Knowledge transfer built in",
                 description:
                   "We don't build black boxes. Every delivery includes documentation, runbooks, and a walkthrough so your team can operate independently.",
+              },
+              {
+                icon: <Globe className="h-5 w-5" />,
+                title: "EU-native compliance",
+                description:
+                  "NIS2, DORA, EU AI Act — compliance is woven into every package, not bolted on. We understand the regulatory landscape European teams face.",
+              },
+              {
+                icon: <Scale className="h-5 w-5" />,
+                title: "Open-source first",
+                description:
+                  "Backstage, Crossplane, ArgoCD, Prometheus — we build on CNCF-grade tools. No proprietary platforms, no vendor lock-in.",
               },
             ].map((item) => (
               <div
@@ -108,28 +123,30 @@ export default function AboutPage() {
             Our stack
           </h2>
           <p className="mt-3 text-base text-ash-400">
-            We work with open, battle-tested tools. No proprietary platforms,
-            no vendor lock-in.
+            We work with open, battle-tested CNCF and cloud-native tools.
+            No proprietary platforms, no vendor lock-in.
           </p>
           <div className="mt-6 flex flex-wrap gap-2">
             {[
+              "Backstage",
+              "Crossplane",
               "Terraform",
+              "OpenTofu",
               "Kubernetes",
-              "GitHub Actions",
-              "GitLab CI",
               "ArgoCD",
               "Flux",
+              "GitHub Actions",
+              "GitLab CI",
               "Prometheus",
               "Grafana",
               "Loki",
               "Tempo",
-              "Datadog",
-              "PagerDuty",
-              "OpsGenie",
+              "OPA",
+              "Kyverno",
               "HashiCorp Vault",
               "Docker",
               "Helm",
-              "Kustomize",
+              "vLLM",
               "AWS",
               "GCP",
               "Azure",
@@ -152,7 +169,7 @@ export default function AboutPage() {
             </h2>
             <p className="mx-auto mt-3 max-w-md text-base text-ash-400">
               Book a free scoping call. 30 minutes, no commitment, no sales
-              pitch — just a conversation about your infrastructure.
+              pitch — just a conversation about your platform challenges.
             </p>
             <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Link
