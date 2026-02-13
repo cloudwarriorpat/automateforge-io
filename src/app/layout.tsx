@@ -5,27 +5,27 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "AutomateForge — Productized DevOps Packages",
+    default: "AutomateForge — Production-Grade Automation Engineering",
     template: "%s | AutomateForge",
   },
   description:
-    "Fixed-scope DevOps packages that ship in days. CI/CD pipelines, SRE foundations, cloud cost optimization, and security hardening. No consulting fog.",
+    "We engineer business automations with monitoring, error handling, and documentation. DevOps-grade reliability for your workflows. Free architecture review. Results in weeks.",
   keywords: [
-    "DevOps",
-    "SRE",
-    "CI/CD",
-    "cloud cost optimization",
-    "FinOps",
-    "Kubernetes",
-    "platform engineering",
-    "productized services",
-    "infrastructure automation",
+    "automation engineering",
+    "production automation",
+    "business process automation",
+    "workflow automation",
+    "Make automation",
+    "n8n automation",
+    "AI agents",
+    "automation monitoring",
+    "integration architecture",
   ],
   authors: [{ name: "AutomateForge" }],
   openGraph: {
-    title: "AutomateForge — Productized DevOps Packages",
+    title: "AutomateForge — Production-Grade Automation Engineering",
     description:
-      "Fixed-scope DevOps packages that ship in days. CI/CD pipelines, SRE foundations, cloud cost optimization, and security hardening.",
+      "We engineer business automations with monitoring, error handling, and documentation. DevOps-grade reliability for your workflows.",
     url: "https://automateforge.io",
     siteName: "AutomateForge",
     locale: "en_US",
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AutomateForge — Productized DevOps Packages",
+    title: "AutomateForge — Production-Grade Automation Engineering",
     description:
-      "Fixed-scope DevOps packages that ship in days. No consulting fog.",
+      "Your automations break because they were never engineered. We fix that.",
   },
   robots: {
     index: true,
@@ -51,9 +51,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="font-sans antialiased min-h-screen mesh-bg">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="font-sans antialiased min-h-screen">
         <Navbar />
-        <main className="pt-16">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
