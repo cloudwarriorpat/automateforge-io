@@ -1,119 +1,177 @@
 @import "tailwindcss";
 
 @theme {
-  /* Forge Design System — AutomateForge.io */
+  /* AutomateForge.io — Automation Engineering Design System */
 
-  /* Forge Orange Accent */
-  --color-forge-400: #FB923C;
-  --color-forge-500: #F97316;
-  --color-forge-600: #EA580C;
-  --color-forge-700: #C2410C;
+  /* Primary Accent: Electric Purple */
+  --color-accent: #6C5CE7;
+  --color-accent-light: #8B7CF7;
+  --color-accent-dark: #5A4BD6;
 
-  /* Clean Blue Secondary */
-  --color-steel-400: #60A5FA;
-  --color-steel-500: #3B82F6;
-  --color-steel-600: #2563EB;
+  /* Secondary Accent: Cyan Blue */
+  --color-cyan: #00D2FF;
+  --color-cyan-light: #33DBFF;
+  --color-cyan-dark: #00B8E6;
 
-  /* Surfaces */
-  --color-slab-950: #0B0F1A;
-  --color-slab-900: #111827;
-  --color-slab-800: #1A2236;
-  --color-slab-700: #1E293B;
-  --color-slab-600: #334155;
-  --color-slab-500: #475569;
+  /* Backgrounds */
+  --color-bg-primary: #0A0A0F;
+  --color-bg-secondary: #12121A;
+  --color-bg-tertiary: #1A1A2E;
 
   /* Text */
-  --color-ash-100: #F1F5F9;
-  --color-ash-200: #E2E8F0;
-  --color-ash-300: #CBD5E1;
-  --color-ash-400: #94A3B8;
-  --color-ash-500: #64748B;
+  --color-text-primary: #F5F5F5;
+  --color-text-secondary: #A0A0B0;
+  --color-text-muted: #6B6B80;
 
   /* Status */
-  --color-ember-500: #EF4444;
-  --color-mint-500: #22C55E;
+  --color-success: #00E676;
+  --color-warning: #FFB74D;
+  --color-error: #FF5252;
+
+  /* Border */
+  --color-border: #2A2A3E;
 
   /* Font families */
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 }
 
-/* Base Styles */
+/* Base */
 body {
-  color: var(--color-ash-100);
-  background: var(--color-slab-950);
+  color: var(--color-text-primary);
+  background: var(--color-bg-primary);
   overflow-x: hidden;
 }
 
-/* Forge Glow Effects */
-.forge-glow {
-  box-shadow: 0 0 40px rgba(249, 115, 22, 0.12), 0 0 80px rgba(249, 115, 22, 0.04);
+/* Dot grid background */
+.dot-grid {
+  background-image: radial-gradient(circle, var(--color-border) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-.forge-glow-strong {
-  box-shadow: 0 0 20px rgba(249, 115, 22, 0.25), 0 0 60px rgba(249, 115, 22, 0.08);
-}
-
-.forge-text-glow {
-  text-shadow: 0 0 30px rgba(249, 115, 22, 0.25);
-}
-
-/* Gradient Mesh Background — distinct from .pl grid */
-.mesh-bg {
-  background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249, 115, 22, 0.06), transparent),
-    radial-gradient(ellipse 50% 50% at 0% 50%, rgba(59, 130, 246, 0.04), transparent),
-    radial-gradient(ellipse 50% 50% at 100% 80%, rgba(249, 115, 22, 0.03), transparent),
-    var(--color-slab-950);
-}
-
-/* Glass Card */
-.glass-card {
-  background: rgba(17, 24, 39, 0.7);
+/* Glass morphism */
+.glass {
+  background: rgba(18, 18, 26, 0.7);
   backdrop-filter: blur(16px);
-  border: 1px solid var(--color-slab-700);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--color-border);
 }
 
-.glass-card:hover {
-  border-color: var(--color-slab-600);
-  box-shadow: 0 0 30px rgba(249, 115, 22, 0.06);
+.glass-hover:hover {
+  background: rgba(26, 26, 46, 0.8);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 20px rgba(108, 92, 231, 0.15);
+}
+
+/* Glow effects */
+.glow-accent {
+  box-shadow: 0 0 20px rgba(108, 92, 231, 0.2), 0 0 60px rgba(108, 92, 231, 0.1);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.2), 0 0 60px rgba(0, 210, 255, 0.1);
+}
+
+.glow-border {
+  border: 1px solid var(--color-border);
+  box-shadow: 0 0 15px rgba(108, 92, 231, 0.1);
 }
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, var(--color-ash-100) 0%, var(--color-ash-300) 100%);
+  background: linear-gradient(135deg, #6C5CE7 0%, #00D2FF 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.gradient-text-forge {
-  background: linear-gradient(135deg, var(--color-forge-400) 0%, var(--color-forge-600) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Gradient button */
+.btn-gradient {
+  background: linear-gradient(135deg, #6C5CE7 0%, #00D2FF 100%);
+  color: white;
+  font-weight: 600;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+.btn-gradient:hover {
+  box-shadow: 0 0 30px rgba(108, 92, 231, 0.4), 0 0 60px rgba(0, 210, 255, 0.2);
+  transform: translateY(-1px);
 }
 
-/* Spark accent line */
-.spark-line {
-  background: linear-gradient(90deg, transparent, var(--color-forge-500), transparent);
-  height: 1px;
+.btn-ghost {
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+.btn-ghost:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 15px rgba(108, 92, 231, 0.15);
 }
 
-/* Focus states for accessibility */
-*:focus-visible {
-  outline: 2px solid var(--color-forge-500);
-  outline-offset: 2px;
+/* Pulse animation for status indicators */
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(0, 230, 118, 0); }
+}
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(255, 82, 82, 0); }
+}
+.pulse-green {
+  animation: pulse-green 2s ease-in-out infinite;
+}
+.pulse-red {
+  animation: pulse-red 2s ease-in-out infinite;
 }
 
-/* Scroll behavior */
+/* Terminal style */
+.terminal {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+.terminal-header {
+  display: flex;
+  gap: 6px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* Status badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+
+/* Section spacing */
+.section {
+  padding: 6rem 0;
+}
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 0;
+  }
+}
+
+/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* Selection color */
+/* Selection */
 ::selection {
-  background: rgba(249, 115, 22, 0.3);
-  color: var(--color-ash-100);
+  background: rgba(108, 92, 231, 0.3);
 }
