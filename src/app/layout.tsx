@@ -59,6 +59,30 @@ export default function RootLayout({
           rel="stylesheet"
         />
         
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              name: "AutomateForge",
+              url: "https://automateforge.io",
+              description:
+                "Production-grade automation engineering. We build business automations with monitoring, error handling, and documentation.",
+              priceRange: "$$$",
+              areaServed: "Worldwide",
+              serviceType: [
+                "Business Automation",
+                "Integration Engineering",
+                "Workflow Automation",
+                "AI Agent Development",
+              ],
+              sameAs: ["https://github.com/cloudwarriorpat"],
+            }),
+          }}
+        />
+
         {/* Google Analytics 4 */}
         <script
           async
