@@ -1,111 +1,26 @@
-import Link from "next/link";
-import { Flame } from "lucide-react";
+import { type Lang, t } from '@/i18n';
+import { Link } from '@tanstack/react-router';
 
-const productLinks = [
-  { href: "/products#reliability", label: "Reliability & SRE" },
-  { href: "/products#delivery", label: "Delivery & CI/CD" },
-  { href: "/products#cost", label: "Cloud Cost & FinOps" },
-  { href: "/products#security", label: "Security & Hardening" },
-];
-
-const companyLinks = [
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
-
-const legalLinks = [
-  { href: "/legal", label: "Privacy Policy" },
-  { href: "/legal", label: "Terms of Service" },
-];
-
-export default function Footer() {
+export default function Footer({ lang }: { lang: Lang }) {
+  const tr = t(lang);
   return (
-    <footer className="border-t border-slab-700/50 bg-slab-950">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-          {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2">
-              <Flame className="h-5 w-5 text-forge-500" />
-              <span className="text-base font-bold text-ash-100">
-                Automate<span className="text-forge-500">Forge</span>
-              </span>
+    <footer className="border-t border-white/10 bg-gray-950">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <span className="text-lg font-bold bg-gradient-to-r from-brand-400 to-brand-600 bg-clip-text text-transparent">
+              AutomateForge
+            </span>
+            <p className="text-sm text-steel-400 mt-1 max-w-md">{tr.footer.tagline}</p>
+          </div>
+          <div className="flex items-center gap-6 text-sm text-steel-400">
+            <Link to={lang === 'en' ? '/en/legal' : '/pl/kontakt'} className="hover:text-white transition-colors">
+              {tr.footer.privacy}
             </Link>
-            <p className="mt-3 text-sm leading-relaxed text-ash-500">
-              Productized DevOps packages.
-              <br />
-              Fixed scope. Fixed price.
-              <br />
-              Results in days.
-            </p>
-          </div>
-
-          {/* Products */}
-          <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-ash-400">
-              Products
-            </h4>
-            <ul className="mt-4 space-y-2.5">
-              {productLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-ash-500 transition-colors hover:text-ash-200"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-ash-400">
-              Company
-            </h4>
-            <ul className="mt-4 space-y-2.5">
-              {companyLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-ash-500 transition-colors hover:text-ash-200"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-ash-400">
-              Legal
-            </h4>
-            <ul className="mt-4 space-y-2.5">
-              {legalLinks.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-ash-500 transition-colors hover:text-ash-200"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
-
-        {/* Bottom */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slab-700/50 pt-8 sm:flex-row">
-          <p className="text-xs text-ash-500">
-            &copy; {new Date().getFullYear()} AutomateForge. All rights reserved.
-          </p>
-          <p className="text-xs text-ash-500">
-            Built for engineers, by engineers.
-          </p>
+        <div className="mt-8 pt-8 border-t border-white/10 text-center text-sm text-steel-500">
+          {tr.footer.copyright}
         </div>
       </div>
     </footer>

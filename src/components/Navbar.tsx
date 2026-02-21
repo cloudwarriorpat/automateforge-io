@@ -1,78 +1,100 @@
-"use client";
+import { Link, useRouterState } from '@tanstack/react-router';
+import { Menu, X, Globe } from 'lucide-react';
+import { useState } from 'react';
+import { type Lang } from '@/i18n';
 
-import Link from "next/link";
-import { useState } from "react";
-import { Menu, X, Flame } from "lucide-react";
+interface NavbarProps {
+  lang: Lang;
+}
 
-const navLinks = [
-  { href: "/products", label: "Products" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
+export default function Navbar({ lang }: NavbarProps) {
+  const [open, setOpen] = useState(false);
+  const router = useRouterState();
+  const path = router.location.pathname;
 
-export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const otherLang = lang === 'en' ? 'pl' : 'en';
+  const switchPath = lang === 'en'
+    ? path.replace(/^\/en/, '/pl') || '/pl'
+    : path.replace(/^\/pl/, '/en') || '/en';
+
+  const links = lang === 'en'
+    ? [
+        { to: '/en', label: 'Home' },
+        { to: '/en/products', label: 'Products' },
+        { to: '/en/about', label: 'About' },
+        { to: '/en/contact', label: 'Contact' },
+      ]
+    : [
+        { to: '/pl', label: 'Strona główna' },
+        { to: '/pl/ksef', label: 'KSeF Studio' },
+        { to: '/pl/agenci', label: 'AI Agenci' },
+        { to: '/pl/szablony', label: 'Szablony' },
+        { to: '/pl/kontakt', label: 'Kontakt' },
+      ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slab-700/50 bg-slab-950/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group" onClick={() => setMobileOpen(false)}>
-          <Flame className="h-6 w-6 text-forge-500 transition-transform group-hover:scale-110" />
-          <span className="text-lg font-bold tracking-tight text-ash-100">
-            Automate<span className="text-forge-500">Forge</span>
-          </span>
-        </Link>
-
-        {/* Desktop Links */}
-        <div className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-ash-400 transition-colors hover:text-ash-100"
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link
-            href="/contact"
-            className="rounded-lg bg-forge-500 px-4 py-2 text-sm font-semibold text-slab-950 transition-colors hover:bg-forge-400"
-          >
-            Book a Call
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-xl border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <Link to={lang === 'en' ? '/en' : '/pl'} className="flex items-center gap-2">
+            <span className="text-xl font-bold bg-gradient-to-r from-brand-400 to-brand-600 bg-clip-text text-transparent">
+              AutomateForge
+            </span>
+            <span className="text-xs text-steel-400 font-medium uppercase tracking-wider">
+              {lang === 'en' ? '.io' : '.pl'}
+            </span>
           </Link>
-        </div>
 
-        {/* Mobile Toggle */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="rounded-lg p-2 text-ash-400 transition-colors hover:text-ash-100 md:hidden"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-        >
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileOpen && (
-        <div className="border-t border-slab-700/50 bg-slab-950/95 backdrop-blur-xl md:hidden">
-          <div className="flex flex-col gap-1 px-4 py-4">
-            {navLinks.map((link) => (
+          {/* Desktop */}
+          <div className="hidden md:flex items-center gap-6">
+            {links.map((l) => (
               <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-ash-300 transition-colors hover:bg-slab-800 hover:text-ash-100"
+                key={l.to}
+                to={l.to}
+                className="text-sm text-steel-300 hover:text-white transition-colors"
+                activeProps={{ className: 'text-white font-medium' }}
+                activeOptions={{ exact: l.to === '/en' || l.to === '/pl' }}
               >
-                {link.label}
+                {l.label}
               </Link>
             ))}
             <Link
-              href="/contact"
-              onClick={() => setMobileOpen(false)}
-              className="mt-2 rounded-lg bg-forge-500 px-3 py-2.5 text-center text-sm font-semibold text-slab-950 transition-colors hover:bg-forge-400"
+              to={switchPath}
+              className="flex items-center gap-1.5 text-sm text-steel-400 hover:text-white transition-colors ml-4 px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20"
             >
-              Book a Call
+              <Globe className="w-4 h-4" />
+              {otherLang.toUpperCase()}
+            </Link>
+          </div>
+
+          {/* Mobile toggle */}
+          <button className="md:hidden text-steel-300" onClick={() => setOpen(!open)}>
+            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="md:hidden border-t border-white/10 bg-gray-950/95 backdrop-blur-xl">
+          <div className="px-4 py-4 space-y-3">
+            {links.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                className="block text-sm text-steel-300 hover:text-white"
+                onClick={() => setOpen(false)}
+              >
+                {l.label}
+              </Link>
+            ))}
+            <Link
+              to={switchPath}
+              className="flex items-center gap-1.5 text-sm text-steel-400 hover:text-white pt-3 border-t border-white/10"
+              onClick={() => setOpen(false)}
+            >
+              <Globe className="w-4 h-4" />
+              {otherLang === 'en' ? 'English' : 'Polski'}
             </Link>
           </div>
         </div>
