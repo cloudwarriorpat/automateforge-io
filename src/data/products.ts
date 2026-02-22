@@ -911,10 +911,10 @@ export function getProductsByTier(tier: ProductTier): Product[] {
   return products.filter((p) => p.tier === tier);
 }
 
+const FEATURED_SLUGS = ["pipeline-forge", "sre-foundations-kit", "cloud-cost-xray"] as const;
+
 export function getFeaturedProducts(): Product[] {
-  return [
-    products.find((p) => p.slug === "pipeline-forge")!,
-    products.find((p) => p.slug === "sre-foundations-kit")!,
-    products.find((p) => p.slug === "cloud-cost-xray")!,
-  ];
+  return FEATURED_SLUGS
+    .map((slug) => products.find((p) => p.slug === slug))
+    .filter((p): p is Product => p !== undefined);
 }

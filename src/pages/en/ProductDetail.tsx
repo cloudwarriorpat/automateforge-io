@@ -3,8 +3,9 @@ import { ArrowLeft, CheckCircle, XCircle } from 'lucide-react';
 import { getProductBySlug } from '@/data/products';
 
 export default function EnProductDetail() {
-  const { slug } = useParams({ strict: false }) as { slug: string };
-  const product = getProductBySlug(slug);
+  const params = useParams({ strict: false });
+  const slug = (params as Record<string, string>).slug;
+  const product = slug ? getProductBySlug(slug) : undefined;
 
   if (!product) {
     return (
