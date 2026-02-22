@@ -1,29 +1,48 @@
-import { createRouter, createRoute, createRootRoute, redirect, Outlet } from '@tanstack/react-router';
+import { createRouter, createRoute, createRootRoute, redirect, Outlet, Link } from '@tanstack/react-router';
+import { lazy, Suspense } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import type { Lang } from '@/i18n';
 
-// EN Pages
-import EnHome from '@/pages/en/Home';
-import EnProducts from '@/pages/en/Products';
-import EnProductDetail from '@/pages/en/ProductDetail';
-import EnAbout from '@/pages/en/About';
-import EnContact from '@/pages/en/Contact';
-import EnLegal from '@/pages/en/Legal';
-import EnKSeF from '@/pages/en/KSeF';
-import EnAgents from '@/pages/en/Agents';
-import EnTemplates from '@/pages/en/Templates';
+// Lazy-loaded EN pages
+const EnHome = lazy(() => import('@/pages/en/Home'));
+const EnProducts = lazy(() => import('@/pages/en/Products'));
+const EnProductDetail = lazy(() => import('@/pages/en/ProductDetail'));
+const EnAbout = lazy(() => import('@/pages/en/About'));
+const EnContact = lazy(() => import('@/pages/en/Contact'));
+const EnLegal = lazy(() => import('@/pages/en/Legal'));
+const EnKSeF = lazy(() => import('@/pages/en/KSeF'));
+const EnAgents = lazy(() => import('@/pages/en/Agents'));
+const EnTemplates = lazy(() => import('@/pages/en/Templates'));
 
-// PL Pages
-import PlHome from '@/pages/pl/Home';
-import PlProducts from '@/pages/pl/Products';
-import PlProductDetail from '@/pages/pl/ProductDetail';
-import PlAbout from '@/pages/pl/About';
-import PlKSeF from '@/pages/pl/KSeF';
-import PlAgents from '@/pages/pl/Agents';
-import PlTemplates from '@/pages/pl/Templates';
-import PlContact from '@/pages/pl/Contact';
-import PlLegal from '@/pages/pl/Legal';
+// Lazy-loaded PL pages
+const PlHome = lazy(() => import('@/pages/pl/Home'));
+const PlProducts = lazy(() => import('@/pages/pl/Products'));
+const PlProductDetail = lazy(() => import('@/pages/pl/ProductDetail'));
+const PlAbout = lazy(() => import('@/pages/pl/About'));
+const PlKSeF = lazy(() => import('@/pages/pl/KSeF'));
+const PlAgents = lazy(() => import('@/pages/pl/Agents'));
+const PlTemplates = lazy(() => import('@/pages/pl/Templates'));
+const PlContact = lazy(() => import('@/pages/pl/Contact'));
+const PlLegal = lazy(() => import('@/pages/pl/Legal'));
+
+function NotFound() {
+  return (
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <div className="text-center">
+        <h1 className="text-6xl font-bold text-steel-50 mb-4">404</h1>
+        <p className="text-xl text-steel-300 mb-8">Page not found</p>
+        <Link to="/en" className="cta-primary px-6 py-3 text-sm">
+          Back to Home
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+function LazyPage({ children }: { children: React.ReactNode }) {
+  return <Suspense fallback={null}>{children}</Suspense>;
+}
 
 // Layout component
 function LangLayout({ lang }: { lang: Lang }) {
@@ -59,15 +78,15 @@ const enLayoutRoute = createRoute({
   component: () => <LangLayout lang="en" />,
 });
 
-const enHomeRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en', component: EnHome });
-const enProductsRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/products', component: EnProducts });
-const enProductDetailRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/products/$slug', component: EnProductDetail });
-const enAboutRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/about', component: EnAbout });
-const enContactRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/contact', component: EnContact });
-const enLegalRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/legal', component: EnLegal });
-const enKSeFRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/ksef', component: EnKSeF });
-const enAgentsRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/ai-agents', component: EnAgents });
-const enTemplatesRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/templates', component: EnTemplates });
+const enHomeRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en', component: () => <LazyPage><EnHome /></LazyPage> });
+const enProductsRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/products', component: () => <LazyPage><EnProducts /></LazyPage> });
+const enProductDetailRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/products/$slug', component: () => <LazyPage><EnProductDetail /></LazyPage> });
+const enAboutRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/about', component: () => <LazyPage><EnAbout /></LazyPage> });
+const enContactRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/contact', component: () => <LazyPage><EnContact /></LazyPage> });
+const enLegalRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/legal', component: () => <LazyPage><EnLegal /></LazyPage> });
+const enKSeFRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/ksef', component: () => <LazyPage><EnKSeF /></LazyPage> });
+const enAgentsRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/ai-agents', component: () => <LazyPage><EnAgents /></LazyPage> });
+const enTemplatesRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/templates', component: () => <LazyPage><EnTemplates /></LazyPage> });
 
 // PL layout
 const plLayoutRoute = createRoute({
@@ -76,44 +95,44 @@ const plLayoutRoute = createRoute({
   component: () => <LangLayout lang="pl" />,
 });
 
-const plHomeRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl', component: PlHome });
-const plProductsRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl/uslugi', component: PlProducts });
-const plProductDetailRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl/uslugi/$slug', component: PlProductDetail });
-const plAboutRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl/o-nas', component: PlAbout });
-const plKSeFRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl/ksef', component: PlKSeF });
-const plAgentsRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl/agenci', component: PlAgents });
-const plTemplatesRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl/szablony', component: PlTemplates });
-const plContactRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl/kontakt', component: PlContact });
-const plLegalRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl/regulamin', component: PlLegal });
+const plHomeRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl', component: () => <LazyPage><PlHome /></LazyPage> });
+const plProductsRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl/uslugi', component: () => <LazyPage><PlProducts /></LazyPage> });
+const plProductDetailRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl/uslugi/$slug', component: () => <LazyPage><PlProductDetail /></LazyPage> });
+const plAboutRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl/o-nas', component: () => <LazyPage><PlAbout /></LazyPage> });
+const plKSeFRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl/ksef', component: () => <LazyPage><PlKSeF /></LazyPage> });
+const plAgentsRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl/agenci', component: () => <LazyPage><PlAgents /></LazyPage> });
+const plTemplatesRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl/szablony', component: () => <LazyPage><PlTemplates /></LazyPage> });
+const plContactRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl/kontakt', component: () => <LazyPage><PlContact /></LazyPage> });
+const plLegalRoute = createRoute({ getParentRoute: () => plLayoutRoute, path: '/pl/regulamin', component: () => <LazyPage><PlLegal /></LazyPage> });
 
 // Build route tree
 const routeTree = rootRoute.addChildren([
   indexRoute,
   enLayoutRoute.addChildren([
-    enHomeRoute, 
-    enProductsRoute, 
-    enProductDetailRoute, 
-    enAboutRoute, 
-    enContactRoute, 
+    enHomeRoute,
+    enProductsRoute,
+    enProductDetailRoute,
+    enAboutRoute,
+    enContactRoute,
     enLegalRoute,
     enKSeFRoute,
     enAgentsRoute,
     enTemplatesRoute,
   ]),
   plLayoutRoute.addChildren([
-    plHomeRoute, 
+    plHomeRoute,
     plProductsRoute,
     plProductDetailRoute,
     plAboutRoute,
-    plKSeFRoute, 
-    plAgentsRoute, 
-    plTemplatesRoute, 
+    plKSeFRoute,
+    plAgentsRoute,
+    plTemplatesRoute,
     plContactRoute,
     plLegalRoute,
   ]),
 ]);
 
-export const router = createRouter({ routeTree, defaultPreload: 'intent' });
+export const router = createRouter({ routeTree, defaultPreload: 'intent', defaultNotFoundComponent: NotFound });
 
 declare module '@tanstack/react-router' {
   interface Register {

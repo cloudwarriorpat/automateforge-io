@@ -36,8 +36,15 @@ npm run preview  # Preview production build
 ```
 
 ## TODO
-- [ ] Connect PocketBase for contact form
-- [ ] Add KSeF Scanner quiz page
-- [ ] Add privacy/terms pages for PL
-- [ ] SEO: meta tags, sitemap, robots.txt
-- [ ] OG images per page
+- [ ] Connect backend for contact form (PocketBase / Formspree / Supabase)
+- [ ] Add KSeF Scanner / readiness quiz page
+- [ ] Add OG images per page
+- [ ] Add cookie consent banner (GDPR for GA4)
+- [ ] Add Calendly/Cal.com booking integration
+- [ ] Add template purchase flow (Stripe / Gumroad)
+
+## Done
+- [x] Privacy/terms pages for PL (`/pl/regulamin`)
+- [x] SEO: meta tags, sitemap.xml, robots.txt
+- [x] 404 not-found page
+- [x] Gzip compression in nginx
