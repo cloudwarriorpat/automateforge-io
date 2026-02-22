@@ -14,21 +14,26 @@ export default function Navbar({ lang }: NavbarProps) {
 
   const otherLang = lang === 'en' ? 'pl' : 'en';
   const switchPath = lang === 'en'
-    ? path.replace(/^\/en/, '/pl') || '/pl'
-    : path.replace(/^\/pl/, '/en') || '/en';
+    ? path.replace(/^\/en/, '/pl').replace(/\/products/, '/uslugi').replace(/\/about/, '/o-nas').replace(/\/legal/, '/regulamin').replace(/\/contact/, '/kontakt').replace(/\/ksef/, '/ksef').replace(/\/ai-agents/, '/agenci').replace(/\/templates/, '/szablony') || '/pl'
+    : path.replace(/^\/pl/, '/en').replace(/\/uslugi/, '/products').replace(/\/o-nas/, '/about').replace(/\/regulamin/, '/legal').replace(/\/kontakt/, '/contact').replace(/\/ksef/, '/ksef').replace(/\/agenci/, '/ai-agents').replace(/\/szablony/, '/templates') || '/en';
 
   const links = lang === 'en'
     ? [
         { to: '/en', label: 'Home' },
         { to: '/en/products', label: 'Products' },
+        { to: '/en/ksef', label: 'KSeF' },
+        { to: '/en/ai-agents', label: 'AI Agents' },
+        { to: '/en/templates', label: 'Templates' },
         { to: '/en/about', label: 'About' },
         { to: '/en/contact', label: 'Contact' },
       ]
     : [
         { to: '/pl', label: 'Strona główna' },
-        { to: '/pl/ksef', label: 'KSeF Studio' },
-        { to: '/pl/agenci', label: 'AI Agenci' },
+        { to: '/pl/uslugi', label: 'Usługi' },
+        { to: '/pl/ksef', label: 'KSeF' },
+        { to: '/pl/agenci', label: 'Agenci' },
         { to: '/pl/szablony', label: 'Szablony' },
+        { to: '/pl/o-nas', label: 'O nas' },
         { to: '/pl/kontakt', label: 'Kontakt' },
       ];
 
