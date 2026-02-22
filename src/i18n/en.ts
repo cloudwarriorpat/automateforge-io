@@ -2,6 +2,9 @@ export const en = {
   nav: {
     home: 'Home',
     products: 'Products',
+    ksef: 'KSeF',
+    agents: 'AI Agents',
+    templates: 'Templates',
     about: 'About',
     contact: 'Contact',
     legal: 'Legal',

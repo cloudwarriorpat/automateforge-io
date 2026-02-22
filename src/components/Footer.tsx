@@ -14,7 +14,7 @@ export default function Footer({ lang }: { lang: Lang }) {
             <p className="text-sm text-steel-400 mt-1 max-w-md">{tr.footer.tagline}</p>
           </div>
           <div className="flex items-center gap-6 text-sm text-steel-400">
-            <Link to={lang === 'en' ? '/en/legal' : '/pl/kontakt'} className="hover:text-white transition-colors">
+            <Link to={lang === 'en' ? '/en/legal' : '/pl/regulamin'} className="hover:text-white transition-colors">
               {tr.footer.privacy}
             </Link>
           </div>

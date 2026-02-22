@@ -1,12 +1,13 @@
 export const pl = {
   nav: {
     home: 'Strona główna',
-    services: 'Usługi',
-    ksef: 'KSeF Studio',
-    agents: 'AI Agenci',
+    products: 'Usługi',
+    ksef: 'KSeF',
+    agents: 'Agenci',
     templates: 'Szablony',
+    about: 'O nas',
     contact: 'Kontakt',
-    partners: 'Partnerzy',
+    legal: 'Regulamin',
   },
   footer: {
     tagline: 'Automatyzacja procesów biznesowych. KSeF, AI Agenci, szablony workflow.',
@@ -20,9 +21,7 @@ export const pl = {
     name: 'Imię i nazwisko',
     email: 'Email',
     company: 'Firma',
-    phone: 'Telefon',
     message: 'Wiadomość',
-    service: 'Interesuje mnie',
     send: 'Wyślij wiadomość',
     success: 'Wiadomość wysłana! Odezwiemy się w ciągu 24h.',
   },
