@@ -9,7 +9,7 @@ WORKDIR /app
 COPY . .
 RUN npm run build
 
-FROM nginx:alpine AS runner
+FROM nginxinc/nginx-unprivileged:stable-alpine AS runner
 COPY --from=builder /app/dist /usr/share/nginx/html
 COPY <<'EOF' /etc/nginx/conf.d/default.conf
 server {
