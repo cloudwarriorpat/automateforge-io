@@ -39,20 +39,20 @@ export default function EnContact() {
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm text-steel-400 mb-2">Name</label>
-                <input type="text" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-steel-500 focus:border-brand-500 focus:outline-none" placeholder="John Doe" />
+                <input type="text" name="name" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-steel-500 focus:border-brand-500 focus:outline-none" placeholder="John Doe" />
               </div>
               <div>
                 <label className="block text-sm text-steel-400 mb-2">Email</label>
-                <input type="email" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-steel-500 focus:border-brand-500 focus:outline-none" placeholder="john@company.com" />
+                <input type="email" name="email" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-steel-500 focus:border-brand-500 focus:outline-none" placeholder="john@company.com" />
               </div>
             </div>
             <div>
               <label className="block text-sm text-steel-400 mb-2">Company</label>
-              <input type="text" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-steel-500 focus:border-brand-500 focus:outline-none" placeholder="Acme Inc." />
+              <input type="text" name="company" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-steel-500 focus:border-brand-500 focus:outline-none" placeholder="Acme Inc." />
             </div>
             <div>
               <label className="block text-sm text-steel-400 mb-2">Message</label>
-              <textarea rows={5} required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-steel-500 focus:border-brand-500 focus:outline-none resize-none" placeholder="Tell us about your infrastructure needs..." />
+              <textarea rows={5} name="message" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-steel-500 focus:border-brand-500 focus:outline-none resize-none" placeholder="Tell us about your infrastructure needs..." />
             </div>
             <button type="submit" className="w-full bg-brand-500 hover:bg-brand-600 text-white font-medium py-3 rounded-xl transition-colors">
               Send Message

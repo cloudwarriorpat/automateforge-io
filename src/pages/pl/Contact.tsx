@@ -39,21 +39,21 @@ export default function PlContact() {
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm text-steel-400 mb-2">Imię i nazwisko</label>
-                <input type="text" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-steel-500 focus:border-brand-500 focus:outline-none" placeholder="Jan Kowalski" />
+                <input type="text" name="name" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-steel-500 focus:border-brand-500 focus:outline-none" placeholder="Jan Kowalski" />
               </div>
               <div>
                 <label className="block text-sm text-steel-400 mb-2">Email</label>
-                <input type="email" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-steel-500 focus:border-brand-500 focus:outline-none" placeholder="jan@firma.pl" />
+                <input type="email" name="email" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-steel-500 focus:border-brand-500 focus:outline-none" placeholder="jan@firma.pl" />
               </div>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm text-steel-400 mb-2">Firma</label>
-                <input type="text" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-steel-500 focus:border-brand-500 focus:outline-none" placeholder="Nazwa firmy" />
+                <input type="text" name="company" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-steel-500 focus:border-brand-500 focus:outline-none" placeholder="Nazwa firmy" />
               </div>
               <div>
                 <label className="block text-sm text-steel-400 mb-2">Interesuje mnie</label>
-                <select className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-brand-500 focus:outline-none">
+                <select name="interest" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-brand-500 focus:outline-none">
                   <option value="">Wybierz...</option>
                   <option value="ksef">KSeF Studio</option>
                   <option value="agents">AI Agents</option>
@@ -64,7 +64,7 @@ export default function PlContact() {
             </div>
             <div>
               <label className="block text-sm text-steel-400 mb-2">Wiadomość</label>
-              <textarea rows={5} required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-steel-500 focus:border-brand-500 focus:outline-none resize-none" placeholder="Opisz swoje potrzeby..." />
+              <textarea rows={5} name="message" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-steel-500 focus:border-brand-500 focus:outline-none resize-none" placeholder="Opisz swoje potrzeby..." />
             </div>
             <button type="submit" className="w-full bg-brand-500 hover:bg-brand-600 text-white font-medium py-3 rounded-xl transition-colors">
               Wyślij wiadomość

@@ -1,7 +1,21 @@
-import { createRouter, createRoute, createRootRoute, redirect, Outlet } from '@tanstack/react-router';
+import { createRouter, createRoute, createRootRoute, redirect, Outlet, Link } from '@tanstack/react-router';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import type { Lang } from '@/i18n';
+
+function NotFound() {
+  return (
+    <div className="min-h-screen flex items-center justify-center px-4">
+      <div className="text-center">
+        <h1 className="text-6xl font-bold text-steel-50 mb-4">404</h1>
+        <p className="text-xl text-steel-300 mb-8">Page not found</p>
+        <Link to="/en" className="cta-primary px-6 py-3 text-sm">
+          Back to Home
+        </Link>
+      </div>
+    </div>
+  );
+}
 
 // EN Pages
 import EnHome from '@/pages/en/Home';
@@ -113,7 +127,7 @@ const routeTree = rootRoute.addChildren([
   ]),
 ]);
 
-export const router = createRouter({ routeTree, defaultPreload: 'intent' });
+export const router = createRouter({ routeTree, defaultPreload: 'intent', defaultNotFoundComponent: NotFound });
 
 declare module '@tanstack/react-router' {
   interface Register {
