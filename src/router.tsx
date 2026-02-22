@@ -28,12 +28,14 @@ import PlLegal from '@/pages/pl/Legal';
 // Layout component
 function LangLayout({ lang }: { lang: Lang }) {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar lang={lang} />
-      <main className="flex-1">
-        <Outlet />
-      </main>
-      <Footer lang={lang} />
+    <div className="site-shell">
+      <div className="site-content min-h-screen flex flex-col">
+        <Navbar lang={lang} />
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <Footer lang={lang} />
+      </div>
     </div>
   );
 }

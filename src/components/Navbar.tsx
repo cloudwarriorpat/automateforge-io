@@ -12,7 +12,6 @@ export default function Navbar({ lang }: NavbarProps) {
   const router = useRouterState();
   const path = router.location.pathname;
 
-  const otherLang = lang === 'en' ? 'pl' : 'en';
   const switchPath = lang === 'en'
     ? path.replace(/^\/en/, '/pl').replace(/\/products/, '/uslugi').replace(/\/about/, '/o-nas').replace(/\/legal/, '/regulamin').replace(/\/contact/, '/kontakt').replace(/\/ksef/, '/ksef').replace(/\/ai-agents/, '/agenci').replace(/\/templates/, '/szablony') || '/pl'
     : path.replace(/^\/pl/, '/en').replace(/\/uslugi/, '/products').replace(/\/o-nas/, '/about').replace(/\/regulamin/, '/legal').replace(/\/kontakt/, '/contact').replace(/\/ksef/, '/ksef').replace(/\/agenci/, '/ai-agents').replace(/\/szablony/, '/templates') || '/en';
@@ -37,73 +36,93 @@ export default function Navbar({ lang }: NavbarProps) {
         { to: '/pl/kontakt', label: 'Kontakt' },
       ];
 
+  const contactPath = lang === 'en' ? '/en/contact' : '/pl/kontakt';
+  const langLabel = lang === 'en' ? 'PL' : 'EN';
+  const langName = lang === 'en' ? 'Polski' : 'English';
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur-xl border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <Link to={lang === 'en' ? '/en' : '/pl'} className="flex items-center gap-2">
-            <span className="text-xl font-bold bg-gradient-to-r from-brand-400 to-brand-600 bg-clip-text text-transparent">
-              AutomateForge
-            </span>
-            <span className="text-xs text-steel-400 font-medium uppercase tracking-wider">
-              {lang === 'en' ? '.io' : '.pl'}
-            </span>
-          </Link>
-
-          {/* Desktop */}
-          <div className="hidden md:flex items-center gap-6">
-            {links.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                className="text-sm text-steel-300 hover:text-white transition-colors"
-                activeProps={{ className: 'text-white font-medium' }}
-                activeOptions={{ exact: l.to === '/en' || l.to === '/pl' }}
-              >
-                {l.label}
-              </Link>
-            ))}
-            <Link
-              to={switchPath}
-              className="flex items-center gap-1.5 text-sm text-steel-400 hover:text-white transition-colors ml-4 px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20"
-            >
-              <Globe className="w-4 h-4" />
-              {otherLang.toUpperCase()}
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
+      <div className="mx-auto max-w-7xl">
+        <nav className="rounded-2xl border border-white/10 bg-steel-950/72 backdrop-blur-2xl shadow-[0_20px_45px_rgba(2,6,16,0.42)]">
+          <div className="flex h-16 items-center justify-between px-4 sm:px-6">
+            <Link to={lang === 'en' ? '/en' : '/pl'} className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-brand-300/30 bg-brand-500/15 text-sm font-bold text-brand-300">
+                AF
+              </span>
+              <div className="leading-tight">
+                <div className="text-sm font-bold tracking-wide text-steel-50">AutomateForge</div>
+                <div className="text-[11px] uppercase tracking-[0.2em] text-steel-500">{lang === 'en' ? 'Studio .io' : 'Studio .pl'}</div>
+              </div>
             </Link>
+
+            <div className="hidden lg:flex items-center gap-4">
+              <div className="flex items-center gap-1 rounded-xl border border-white/10 bg-black/20 p-1">
+                {links.map((l) => (
+                  <Link
+                    key={l.to}
+                    to={l.to}
+                    className="px-3 py-2 rounded-lg text-sm font-medium text-steel-300 hover:text-steel-50 hover:bg-white/5 transition-colors"
+                    activeProps={{ className: 'px-3 py-2 rounded-lg text-sm font-medium text-steel-50 bg-white/10 border border-white/10' }}
+                    activeOptions={{ exact: l.to === '/en' || l.to === '/pl' }}
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Link to={switchPath} className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-white/10 text-sm font-medium text-steel-300 hover:text-steel-50 hover:border-white/20 transition-colors">
+                  <Globe className="w-4 h-4" />
+                  {langLabel}
+                </Link>
+                <Link to={contactPath} className="cta-primary px-4 py-2 text-sm">
+                  {lang === 'en' ? 'Book Call' : 'Umów rozmowę'}
+                </Link>
+              </div>
+            </div>
+
+            <button
+              className="inline-flex lg:hidden items-center justify-center rounded-lg border border-white/10 p-2 text-steel-300 hover:text-steel-50 hover:bg-white/5 transition-colors"
+              onClick={() => setOpen(!open)}
+              aria-expanded={open}
+              aria-label={open ? 'Close menu' : 'Open menu'}
+            >
+              {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
 
-          {/* Mobile toggle */}
-          <button className="md:hidden text-steel-300" onClick={() => setOpen(!open)}>
-            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
+          {open && (
+            <div className="lg:hidden border-t border-white/10 px-4 pb-5 pt-4 space-y-3">
+              {links.map((l) => (
+                <Link
+                  key={l.to}
+                  to={l.to}
+                  className="block rounded-lg border border-white/5 px-3 py-2 text-sm font-medium text-steel-300 hover:text-steel-50 hover:border-white/15 hover:bg-white/5 transition-colors"
+                  activeProps={{ className: 'block rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm font-medium text-steel-50' }}
+                  activeOptions={{ exact: l.to === '/en' || l.to === '/pl' }}
+                  onClick={() => setOpen(false)}
+                >
+                  {l.label}
+                </Link>
+              ))}
+
+              <div className="pt-2 grid grid-cols-2 gap-3">
+                <Link
+                  to={switchPath}
+                  className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-white/10 px-3 py-2 text-sm font-medium text-steel-300 hover:text-steel-50 transition-colors"
+                  onClick={() => setOpen(false)}
+                >
+                  <Globe className="w-4 h-4" />
+                  {langName}
+                </Link>
+                <Link to={contactPath} className="cta-primary px-3 py-2 text-sm" onClick={() => setOpen(false)}>
+                  {lang === 'en' ? 'Book Call' : 'Kontakt'}
+                </Link>
+              </div>
+            </div>
+          )}
+        </nav>
       </div>
-
-      {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden border-t border-white/10 bg-gray-950/95 backdrop-blur-xl">
-          <div className="px-4 py-4 space-y-3">
-            {links.map((l) => (
-              <Link
-                key={l.to}
-                to={l.to}
-                className="block text-sm text-steel-300 hover:text-white"
-                onClick={() => setOpen(false)}
-              >
-                {l.label}
-              </Link>
-            ))}
-            <Link
-              to={switchPath}
-              className="flex items-center gap-1.5 text-sm text-steel-400 hover:text-white pt-3 border-t border-white/10"
-              onClick={() => setOpen(false)}
-            >
-              <Globe className="w-4 h-4" />
-              {otherLang === 'en' ? 'English' : 'Polski'}
-            </Link>
-          </div>
-        </div>
-      )}
-    </nav>
+    </header>
   );
 }
