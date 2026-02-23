@@ -38,14 +38,14 @@ export default function PlProductDetail() {
           <span className="text-xs text-brand-400 font-medium uppercase tracking-wider">{translatedProduct.categoryLabel} · {translatedProduct.tierLabel}</span>
           <h1 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-3">{translatedProduct.name}</h1>
           <p className="text-xl text-steel-400">{translatedProduct.tagline}</p>
-          <div className="flex items-center gap-6 mt-6">
-            <div className="glass-card px-6 py-3">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 mt-6">
+            <div className="glass-card px-5 py-3 sm:px-6">
               <div className="text-sm text-steel-400">Cena</div>
-              <div className="text-2xl font-bold text-white">{translatedProduct.pricePln}</div>
+              <div className="text-xl sm:text-2xl font-bold text-white">{translatedProduct.pricePln}</div>
             </div>
-            <div className="glass-card px-6 py-3">
+            <div className="glass-card px-5 py-3 sm:px-6">
               <div className="text-sm text-steel-400">Termin</div>
-              <div className="text-2xl font-bold text-white">{translatedProduct.timeline}</div>
+              <div className="text-xl sm:text-2xl font-bold text-white">{translatedProduct.timeline}</div>
             </div>
           </div>
         </div>
