@@ -3,12 +3,15 @@ import { Package, Star, ChevronRight } from 'lucide-react';
 import SectionHeading from '@/components/SectionHeading';
 
 const TEMPLATES = [
-  { title: 'KSeF → Fakturownia sync', category: 'Finance', price: '€69', tools: 'Make / n8n', integrations: ['KSeF', 'Fakturownia'], popular: true },
-  { title: 'Allegro → BaseLinker → InPost', category: 'E-commerce', price: '€99', tools: 'Make', integrations: ['Allegro', 'BaseLinker', 'InPost'], popular: true },
-  { title: 'Lead scoring + CRM routing', category: 'CRM', price: '€79', tools: 'n8n / Zapier', integrations: ['HubSpot', 'Apollo', 'Slack'], popular: false },
-  { title: 'Invoice → ifirma auto-booking', category: 'Finance', price: '€49', tools: 'Make', integrations: ['ifirma', 'Gmail'], popular: false },
-  { title: 'Przelewy24 → Google Sheets report', category: 'Finance', price: '€39', tools: 'Zapier', integrations: ['Przelewy24', 'Google Sheets'], popular: false },
-  { title: 'Social media auto-publish', category: 'Marketing', price: '€59', tools: 'Make / n8n', integrations: ['Buffer', 'Canva', 'LinkedIn'], popular: false },
+  { title: 'CRM Lead Routing', category: 'Sales', price: '€79', tools: 'Make.com / n8n', integrations: ['HubSpot', 'Slack', 'Google Sheets'], popular: true },
+  { title: 'Invoice Processing Pipeline', category: 'Finance', price: '€99', tools: 'Make.com', integrations: ['Gmail', 'Google Sheets', 'Xero'], popular: true },
+  { title: 'E-commerce Order Sync', category: 'E-commerce', price: '€89', tools: 'n8n / Make.com', integrations: ['Shopify', 'Airtable', 'Slack'], popular: false },
+  { title: 'Client Onboarding Flow', category: 'Operations', price: '€69', tools: 'Make.com / Zapier', integrations: ['Typeform', 'Notion', 'Slack'], popular: false },
+  { title: 'Social Media Auto-Publish', category: 'Marketing', price: '€59', tools: 'Make.com / n8n', integrations: ['Buffer', 'LinkedIn', 'Google Sheets'], popular: false },
+  { title: 'Support Ticket Classifier', category: 'Support', price: '€89', tools: 'n8n', integrations: ['Zendesk', 'Slack', 'Airtable'], popular: true },
+  { title: 'Weekly Report Generator', category: 'Reporting', price: '€49', tools: 'Make.com', integrations: ['Google Sheets', 'Slack', 'Gmail'], popular: false },
+  { title: 'Appointment Reminder System', category: 'Operations', price: '€59', tools: 'Zapier / Make.com', integrations: ['Calendly', 'Twilio', 'Gmail'], popular: false },
+  { title: 'Expense Categorizer', category: 'Finance', price: '€69', tools: 'n8n', integrations: ['Gmail', 'Google Sheets', 'Slack'], popular: false },
 ];
 
 export default function EnTemplates() {
@@ -16,9 +19,9 @@ export default function EnTemplates() {
     <div className="pt-24 pb-20 px-4">
       <div className="max-w-7xl mx-auto">
         <SectionHeading
-          badge="From €39"
+          badge="From €49"
           title="Automation Templates"
-          subtitle="Ready-made workflows for the Polish market. Buy, deploy, run."
+          subtitle="Pre-built workflow templates. Buy, customize, deploy. Works with Make.com, n8n, and Zapier."
         />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -54,9 +57,9 @@ export default function EnTemplates() {
         <div className="mt-16 text-center glass-card p-12">
           <Package className="w-12 h-12 text-brand-400 mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-white mb-3">Need a custom workflow?</h2>
-          <p className="text-steel-400 mb-6">We'll build a dedicated template for your needs.</p>
+          <p className="text-steel-400 mb-6">We build dedicated automation workflows tailored to your specific requirements and tool stack.</p>
           <Link to="/en/contact" className="inline-flex items-center gap-2 px-8 py-3 bg-brand-500 hover:bg-brand-600 text-white font-medium rounded-xl transition-colors">
-            Schedule a Call
+            Book Discovery Call
           </Link>
         </div>
       </div>

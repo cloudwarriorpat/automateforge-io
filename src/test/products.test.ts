@@ -51,18 +51,18 @@ describe('Products data', () => {
   });
 
   it('getProductsByCategory filters correctly', () => {
-    const reliabilityProducts = getProductsByCategory('reliability');
-    expect(reliabilityProducts.length).toBeGreaterThan(0);
-    for (const p of reliabilityProducts) {
-      expect(p.category).toBe('reliability');
+    const workflowProducts = getProductsByCategory('workflow');
+    expect(workflowProducts.length).toBeGreaterThan(0);
+    for (const p of workflowProducts) {
+      expect(p.category).toBe('workflow');
     }
   });
 
   it('getProductsByTier filters correctly', () => {
-    const entryProducts = getProductsByTier('entry');
-    expect(entryProducts.length).toBeGreaterThan(0);
-    for (const p of entryProducts) {
-      expect(p.tier).toBe('entry');
+    const starterProducts = getProductsByTier('starter');
+    expect(starterProducts.length).toBeGreaterThan(0);
+    for (const p of starterProducts) {
+      expect(p.tier).toBe('starter');
     }
   });
 

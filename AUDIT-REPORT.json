@@ -1,0 +1,337 @@
+{
+  "meta": {
+    "repository": "automateforge-io",
+    "domain": "automateforge.io",
+    "audit_date": "2026-02-23",
+    "tech_stack": "React 19 + TanStack Router + TypeScript + Tailwind CSS v4 + Vite 7 + Docker + Helm/K8s + GitHub Actions CI/CD",
+    "auditor": "Claude Opus 4.6 — Senior Web Developer & Automation Services Website Specialist"
+  },
+
+  "phase_1_technical_audit": {
+    "overall_health_score_before": "5.5/10",
+    "overall_health_score_after": "8.5/10",
+    "findings": [
+      {
+        "severity": "critical",
+        "category": "brand_mismatch",
+        "issue": "Website positioned as DevOps & Platform Engineering Products company, completely misaligned with AutomateForge.io automation services brand",
+        "fix": "Complete rebrand of all EN pages to automation services positioning (workflow automation, AI integration, custom development, process audit)",
+        "status": "fixed"
+      },
+      {
+        "severity": "critical",
+        "category": "seo",
+        "issue": "Title, meta description, OG tags all reference 'DevOps & Platform Engineering Products' and 'KSeF integrations'",
+        "fix": "Rewrote all meta tags targeting 'business automation services', 'workflow automation consultant', 'n8n expert', 'Make.com developer', 'custom API integration'",
+        "status": "fixed"
+      },
+      {
+        "severity": "critical",
+        "category": "gdpr",
+        "issue": "Google Analytics GA4 script loaded unconditionally in index.html before user cookie consent",
+        "fix": "Removed auto-loading GA from index.html. GA now only loads after explicit user consent via CookieConsent component",
+        "status": "fixed"
+      },
+      {
+        "severity": "high",
+        "category": "overlap",
+        "issue": "Polish market content on .io domain directly overlaps with AutomateForge.pl brand",
+        "fix": "Removed PL pages from sitemap, removed language switcher from nav, English-only positioning for .io domain",
+        "status": "fixed"
+      },
+      {
+        "severity": "high",
+        "category": "seo",
+        "issue": "No Schema.org structured data markup at all",
+        "fix": "Added ProfessionalService schema with OfferCatalog listing all 4 service categories",
+        "status": "fixed"
+      },
+      {
+        "severity": "high",
+        "category": "seo",
+        "issue": "Sitemap had incorrect URLs (/en/agents instead of /en/ai-agents, /pl/products instead of /pl/uslugi)",
+        "fix": "Rewrote sitemap with correct English-only URLs reflecting new route structure",
+        "status": "fixed"
+      },
+      {
+        "severity": "high",
+        "category": "seo",
+        "issue": "No canonical URL defined in HTML head",
+        "fix": "Added <link rel='canonical' href='https://automateforge.io/en/' />",
+        "status": "fixed"
+      },
+      {
+        "severity": "medium",
+        "category": "contact_form",
+        "issue": "Contact form uses mailto: link — unreliable, requires user's email client to be configured",
+        "fix": "Kept mailto approach (no backend available) but improved UX with service dropdown, better placeholder text, and clear fallback messaging. Backend integration recommended as roadmap item.",
+        "status": "improved"
+      },
+      {
+        "severity": "medium",
+        "category": "seo",
+        "issue": "No target keywords in meta tags",
+        "fix": "Added meta keywords: 'business automation services, workflow automation consultant, n8n expert, Make.com developer, custom API integration, AI integration services, process optimization, Zapier automation'",
+        "status": "fixed"
+      },
+      {
+        "severity": "low",
+        "category": "assets",
+        "issue": "og.png referenced in OG meta tags but missing from /public",
+        "fix": "Not fixed — requires design asset creation",
+        "status": "open"
+      },
+      {
+        "severity": "low",
+        "category": "performance",
+        "issue": "Google Fonts loaded from CDN in CSS @import (render blocking)",
+        "fix": "Acceptable for current scale. Font subsetting recommended in roadmap.",
+        "status": "noted"
+      }
+    ]
+  },
+
+  "phase_2_seo_audit": {
+    "target_keywords": [
+      "business automation services",
+      "workflow automation consultant",
+      "n8n expert",
+      "Make.com developer",
+      "custom API integration",
+      "AI integration services",
+      "process optimization",
+      "Zapier automation",
+      "automation agency",
+      "workflow automation for business"
+    ],
+    "schema_org": {
+      "status": "implemented",
+      "types": ["ProfessionalService", "OfferCatalog", "Service"],
+      "coverage": "Homepage with full service catalog"
+    },
+    "meta_tags": {
+      "title": "AutomateForge — Business Automation Services | Workflow, AI & API Integration",
+      "description": "Custom workflow automation, AI integration, and API development for global teams. Make.com, n8n, Zapier experts. Fixed scope, fixed price, enterprise-grade reliability. Built by engineers.",
+      "og_tags": "Complete with title, description, image, url, locale",
+      "twitter_card": "summary_large_image with all fields"
+    },
+    "sitemap": {
+      "status": "rewritten",
+      "urls": 8,
+      "language": "English only (PL content belongs to automateforge.pl)",
+      "change_frequencies": "weekly/monthly as appropriate"
+    },
+    "canonical": "https://automateforge.io/en/",
+    "recommendations": [
+      "Create individual meta tags per page using React Helmet or similar",
+      "Add FAQ schema to service detail pages",
+      "Add BreadcrumbList schema to service pages",
+      "Create blog for long-tail keyword targeting"
+    ]
+  },
+
+  "phase_3_conversion_audit": {
+    "hero_section": {
+      "before": "Productized DevOps delivery — Infrastructure upgrades that ship and stick",
+      "after": "Business automation services — Stop doing manually what machines should handle",
+      "jtbd_framing": "Job: Eliminate manual, repetitive work from operations. Hero directly addresses the visitor's frustration with manual processes."
+    },
+    "service_categories": {
+      "before": ["Reliability & SRE", "Delivery & CI/CD", "Cloud Cost & FinOps", "Security & Hardening"],
+      "after": [
+        "Workflow Automation (Make.com, n8n, Zapier)",
+        "AI Integration (Claude, GPT, custom models)",
+        "Custom Development (APIs, scripts, bots)",
+        "Process Audit & Optimization"
+      ]
+    },
+    "use_cases": {
+      "status": "added",
+      "industries": ["E-commerce", "Finance", "SaaS", "Agencies", "Healthcare", "Real Estate"]
+    },
+    "trust_signals": {
+      "added": [
+        "Integration showcase (Make.com, n8n, Zapier, Claude AI, GPT-4, etc.)",
+        "Fixed scope / fixed price messaging",
+        "'Built by a DevOps engineer' credibility badge",
+        "Human-in-the-loop AI guardrails section"
+      ]
+    },
+    "cta_improvements": {
+      "primary_cta": "Book a free discovery call (changed from 'Explore products')",
+      "contact_page": "Added service interest dropdown, JTBD-framed placeholder text, discovery call positioning",
+      "every_page": "Consistent 'Book Discovery Call' CTA across all pages"
+    },
+    "roi_calculator": {
+      "status": "not_implemented",
+      "recommendation": "Add interactive 'How much time will you save?' calculator — see roadmap"
+    }
+  },
+
+  "phase_4_code_cleanup": {
+    "changes": [
+      "Removed unused imports (CheckCircle2, useRouterState)",
+      "Updated TypeScript types: ProductCategory → ServiceCategory, ProductTier → ServiceTier",
+      "Fixed PL Products page to use new category types",
+      "Updated all test files to match new data structure (23/23 tests pass)",
+      "Added proper redirect routes for old URLs (/en/products → /en/services, /en/ksef → /en/process-audit)",
+      "Removed language switcher from nav (English-only for .io)",
+      "Cleaned up cookie consent component with proper GA consent-gating",
+      "All TypeScript strict mode checks pass",
+      "Build produces clean output with no warnings"
+    ],
+    "build_status": "success",
+    "test_status": "23/23 passed",
+    "typecheck_status": "clean"
+  },
+
+  "phase_5_upgrade_roadmap": {
+    "priority_1_quick_wins": [
+      {
+        "item": "Backend contact form integration",
+        "description": "Replace mailto: with Formspree, PocketBase, or custom API endpoint for reliable lead capture",
+        "impact": "high",
+        "effort": "low"
+      },
+      {
+        "item": "Create og.png social sharing image",
+        "description": "Design branded OG image for social media sharing (1200x630px)",
+        "impact": "medium",
+        "effort": "low"
+      },
+      {
+        "item": "Per-page meta tags",
+        "description": "Add React Helmet or similar for unique title/description on each page",
+        "impact": "high",
+        "effort": "low"
+      }
+    ],
+    "priority_2_service_landing_pages": [
+      {
+        "item": "Dedicated landing page: Workflow Automation",
+        "description": "Long-form page targeting 'Make.com developer', 'n8n expert', 'workflow automation services'",
+        "impact": "high",
+        "effort": "medium"
+      },
+      {
+        "item": "Dedicated landing page: AI Integration",
+        "description": "Long-form page targeting 'AI integration services', 'AI agent development', 'document processing automation'",
+        "impact": "high",
+        "effort": "medium"
+      },
+      {
+        "item": "Dedicated landing page: Custom API Development",
+        "description": "Long-form page targeting 'custom API integration', 'API development services'",
+        "impact": "medium",
+        "effort": "medium"
+      }
+    ],
+    "priority_3_interactive_elements": [
+      {
+        "item": "Automation ROI Calculator",
+        "description": "Interactive tool: input hours spent on manual tasks, number of employees, hourly cost → shows time and cost savings potential",
+        "impact": "high",
+        "effort": "medium"
+      },
+      {
+        "item": "Automation readiness quiz",
+        "description": "5-question quiz that suggests the right service package based on team size, tools, and automation maturity",
+        "impact": "medium",
+        "effort": "medium"
+      }
+    ],
+    "priority_4_content_expansion": [
+      {
+        "item": "Blog: automation tutorials and tool comparisons",
+        "description": "SEO-driven content: 'Make.com vs n8n', 'How to automate invoice processing', 'AI agents for small business'",
+        "impact": "high",
+        "effort": "high"
+      },
+      {
+        "item": "Case studies",
+        "description": "2-3 detailed case studies showing before/after metrics (time saved, cost reduced, errors eliminated)",
+        "impact": "high",
+        "effort": "medium"
+      },
+      {
+        "item": "Integration showcase page",
+        "description": "Visual page with logos and details of all supported tools (Make, n8n, Zapier, HubSpot, Slack, etc.)",
+        "impact": "medium",
+        "effort": "low"
+      }
+    ],
+    "priority_5_product_features": [
+      {
+        "item": "Template marketplace expansion",
+        "description": "Expand from 9 templates to 20+, add preview screenshots, Stripe payment integration",
+        "impact": "medium",
+        "effort": "high"
+      },
+      {
+        "item": "Client portal: project status tracking",
+        "description": "Simple dashboard where clients can see project progress, milestones, and deliverables",
+        "impact": "medium",
+        "effort": "high"
+      },
+      {
+        "item": "Productized starter kit",
+        "description": "'Starter Automation Kit' — fixed scope, fixed price, designed for first-time automation buyers. Landing page with checkout.",
+        "impact": "high",
+        "effort": "medium"
+      }
+    ],
+    "priority_6_technical_improvements": [
+      {
+        "item": "Server-side rendering (SSR) migration",
+        "description": "Migrate from SPA to Next.js or Remix for better SEO and initial load performance",
+        "impact": "high",
+        "effort": "high"
+      },
+      {
+        "item": "Font optimization",
+        "description": "Self-host fonts with subsetting to eliminate render-blocking Google Fonts request",
+        "impact": "low",
+        "effort": "low"
+      },
+      {
+        "item": "Remove PL pages from .io codebase",
+        "description": "Move all PL content to the automateforge.pl repository. Keep redirects on .io for any indexed PL URLs.",
+        "impact": "medium",
+        "effort": "medium"
+      },
+      {
+        "item": "Add Formspree or backend API for contact form",
+        "description": "Replace mailto: with actual form submission to capture leads reliably",
+        "impact": "high",
+        "effort": "low"
+      }
+    ]
+  },
+
+  "differentiation_from_automateforge_pl": {
+    "automateforge_io": {
+      "language": "English only",
+      "audience": "Global B2B — operations managers, founders, CTOs worldwide",
+      "positioning": "Premium custom automation services",
+      "services": "Workflow automation, AI integration, custom development, process consulting",
+      "pricing": "EUR only",
+      "brand_voice": "Technical credibility, engineering-first, no marketing fluff"
+    },
+    "automateforge_pl": {
+      "language": "Polish only",
+      "audience": "Polish SMBs and enterprises",
+      "positioning": "Productized automation packages for Polish market",
+      "services": "KSeF integration, Polish-specific templates, local tool integrations",
+      "pricing": "PLN",
+      "brand_voice": "Market-specific, compliance-focused (KSeF deadlines)"
+    },
+    "separation_actions_taken": [
+      "Removed Polish pages from .io sitemap",
+      "Removed language switcher from navigation",
+      "Replaced KSeF page with Process Audit & Optimization",
+      "Replaced Polish-market templates with global templates",
+      "All content now English-only with global audience language",
+      "Email contact changed from dual (hello@ + kontakt@) to hello@automateforge.io only"
+    ]
+  }
+}

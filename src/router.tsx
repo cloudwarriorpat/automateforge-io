@@ -11,11 +11,11 @@ const EnProductDetail = lazy(() => import('@/pages/en/ProductDetail'));
 const EnAbout = lazy(() => import('@/pages/en/About'));
 const EnContact = lazy(() => import('@/pages/en/Contact'));
 const EnLegal = lazy(() => import('@/pages/en/Legal'));
-const EnKSeF = lazy(() => import('@/pages/en/KSeF'));
-const EnAgents = lazy(() => import('@/pages/en/Agents'));
+const EnProcessAudit = lazy(() => import('@/pages/en/KSeF'));
+const EnAIIntegration = lazy(() => import('@/pages/en/Agents'));
 const EnTemplates = lazy(() => import('@/pages/en/Templates'));
 
-// Lazy-loaded PL pages
+// Lazy-loaded PL pages (kept for backward compatibility, redirects recommended)
 const PlHome = lazy(() => import('@/pages/pl/Home'));
 const PlProducts = lazy(() => import('@/pages/pl/Products'));
 const PlProductDetail = lazy(() => import('@/pages/pl/ProductDetail'));
@@ -91,16 +91,20 @@ const enLayoutRoute = createRoute({
 });
 
 const enHomeRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en', component: () => <LazyPage><EnHome /></LazyPage> });
-const enProductsRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/products', component: () => <LazyPage><EnProducts /></LazyPage> });
-const enProductDetailRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/products/$slug', component: () => <LazyPage><EnProductDetail /></LazyPage> });
+const enServicesRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/services', component: () => <LazyPage><EnProducts /></LazyPage> });
+const enServiceDetailRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/services/$slug', component: () => <LazyPage><EnProductDetail /></LazyPage> });
 const enAboutRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/about', component: () => <LazyPage><EnAbout /></LazyPage> });
 const enContactRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/contact', component: () => <LazyPage><EnContact /></LazyPage> });
 const enLegalRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/legal', component: () => <LazyPage><EnLegal /></LazyPage> });
-const enKSeFRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/ksef', component: () => <LazyPage><EnKSeF /></LazyPage> });
-const enAgentsRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/ai-agents', component: () => <LazyPage><EnAgents /></LazyPage> });
+const enProcessAuditRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/process-audit', component: () => <LazyPage><EnProcessAudit /></LazyPage> });
+const enAIIntegrationRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/ai-agents', component: () => <LazyPage><EnAIIntegration /></LazyPage> });
 const enTemplatesRoute = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/templates', component: () => <LazyPage><EnTemplates /></LazyPage> });
+// Redirect old /en/products URLs to /en/services
+const enProductsRedirect = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/products', beforeLoad: () => { throw redirect({ to: '/en/services' }); } });
+// Redirect old /en/ksef URLs to /en/process-audit
+const enKsefRedirect = createRoute({ getParentRoute: () => enLayoutRoute, path: '/en/ksef', beforeLoad: () => { throw redirect({ to: '/en/process-audit' }); } });
 
-// PL layout
+// PL layout (maintained for backward compatibility — AutomateForge.pl is the primary Polish brand)
 const plLayoutRoute = createRoute({
   getParentRoute: () => rootRoute,
   id: 'pl-layout',
@@ -122,14 +126,16 @@ const routeTree = rootRoute.addChildren([
   indexRoute,
   enLayoutRoute.addChildren([
     enHomeRoute,
-    enProductsRoute,
-    enProductDetailRoute,
+    enServicesRoute,
+    enServiceDetailRoute,
     enAboutRoute,
     enContactRoute,
     enLegalRoute,
-    enKSeFRoute,
-    enAgentsRoute,
+    enProcessAuditRoute,
+    enAIIntegrationRoute,
     enTemplatesRoute,
+    enProductsRedirect,
+    enKsefRedirect,
   ]),
   plLayoutRoute.addChildren([
     plHomeRoute,

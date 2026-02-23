@@ -6,35 +6,89 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <!-- Google Analytics GA4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VY53W8Y8ZG"></script>
+    <!-- Google Analytics GA4 — deferred until cookie consent -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-VY53W8Y8ZG');
+      // GA is only initialized after user grants consent via CookieConsent component
     </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#020617" />
-    <title>AutomateForge — DevOps & Platform Engineering Products</title>
-    <meta name="description" content="KSeF integrations, AI agents for back-office, and ready-made automation templates. Build your DevOps and platform engineering stack faster." />
+    <title>AutomateForge — Business Automation Services | Workflow, AI & API Integration</title>
+    <meta name="description" content="Custom workflow automation, AI integration, and API development for global teams. Make.com, n8n, Zapier experts. Fixed scope, fixed price, enterprise-grade reliability. Built by engineers." />
+    <meta name="keywords" content="business automation services, workflow automation consultant, n8n expert, Make.com developer, custom API integration, AI integration services, process optimization, Zapier automation" />
     <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://automateforge.io/en/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="AutomateForge" />
-    <meta property="og:title" content="AutomateForge — DevOps & Platform Engineering Products" />
-    <meta property="og:description" content="KSeF integrations, AI agents for back-office, and ready-made automation templates. Build your DevOps stack faster." />
+    <meta property="og:title" content="AutomateForge — Business Automation Services" />
+    <meta property="og:description" content="Custom workflow automation, AI integration, and API development. Fixed scope, fixed price, enterprise-grade reliability." />
     <meta property="og:url" content="https://automateforge.io" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:image" content="https://automateforge.io/og.png" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="AutomateForge — DevOps & Platform Engineering Products" />
-    <meta name="twitter:description" content="KSeF integrations, AI agents for back-office, and ready-made automation templates." />
+    <meta name="twitter:title" content="AutomateForge — Business Automation Services" />
+    <meta name="twitter:description" content="Custom workflow automation, AI integration, and API development for global teams." />
     <meta name="twitter:image" content="https://automateforge.io/og.png" />
+
+    <!-- Schema.org: ProfessionalService -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "AutomateForge",
+      "url": "https://automateforge.io",
+      "description": "Custom workflow automation, AI integration, and API development for global teams. Built by DevOps engineers with enterprise-grade reliability.",
+      "email": "hello@automateforge.io",
+      "areaServed": "Worldwide",
+      "serviceType": ["Business Automation", "Workflow Automation", "AI Integration", "API Development", "Process Optimization"],
+      "knowsAbout": ["Make.com", "n8n", "Zapier", "Claude AI", "GPT-4", "API Integration", "Process Automation"],
+      "priceRange": "$$-$$$",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Automation Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Workflow Automation",
+              "description": "Connect your tools, eliminate manual steps, and build reliable automations with Make.com, n8n, or Zapier."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Integration",
+              "description": "Deploy AI agents for email triage, document processing, lead qualification, and more."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Custom Development",
+              "description": "APIs, scripts, bots, and integrations built from scratch when off-the-shelf tools aren't enough."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Process Audit & Optimization",
+              "description": "Map your workflows, find bottlenecks, and get a prioritized automation roadmap."
+            }
+          }
+        ]
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

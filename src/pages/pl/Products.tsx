@@ -1,28 +1,28 @@
 import { Link } from '@tanstack/react-router';
-import { products, type ProductCategory } from '@/data/products';
+import { products, type ServiceCategory } from '@/data/products';
 import SectionHeading from '@/components/SectionHeading';
 import { useState } from 'react';
 
-const categories: (ProductCategory | 'all')[] = ['all', 'reliability', 'delivery', 'cost', 'security'];
+const categories: (ServiceCategory | 'all')[] = ['all', 'workflow', 'ai', 'custom-dev', 'process-audit'];
 
-const categoryLabelsPl: Record<ProductCategory | 'all', string> = {
+const categoryLabelsPl: Record<ServiceCategory | 'all', string> = {
   all: 'Wszystkie',
-  reliability: 'Niezawodność i SRE',
-  delivery: 'Dostarczanie i CI/CD',
-  cost: 'Koszty Chmury i FinOps',
-  security: 'Bezpieczeństwo i Hardening',
+  workflow: 'Automatyzacja Workflow',
+  ai: 'Integracja AI',
+  'custom-dev': 'Custom Development',
+  'process-audit': 'Audyt Procesów',
 };
 
 export default function PlProducts() {
-  const [filter, setFilter] = useState<ProductCategory | 'all'>('all');
+  const [filter, setFilter] = useState<ServiceCategory | 'all'>('all');
   const filtered = filter === 'all' ? products : products.filter((p) => p.category === filter);
 
   return (
     <div className="pt-24 pb-20 px-4">
       <div className="max-w-7xl mx-auto">
         <SectionHeading
-          title="Wszystkie Usługi"
-          subtitle="Usługi DevOps w stałym zakresie. Bez rozliczania godzin. Bez wydłużania zakresu."
+          title="Wszystkie Uslugi"
+          subtitle="Uslugi automatyzacji w stalym zakresie. Bez rozliczania godzin. Bez wydluzania zakresu."
         />
 
         {/* Filter */}
