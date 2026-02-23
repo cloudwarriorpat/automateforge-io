@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- EN pages -->
+  <!-- EN pages — AutomateForge.io is the English-language global brand -->
   <url>
     <loc>https://automateforge.io/en/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://automateforge.io/en/"/>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://automateforge.io/pl/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://automateforge.io/en/products</loc>
+    <loc>https://automateforge.io/en/services</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://automateforge.io/en/ksef</loc>
+    <loc>https://automateforge.io/en/ai-agents</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://automateforge.io/en/agents</loc>
+    <loc>https://automateforge.io/en/process-audit</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -38,46 +35,12 @@
   <url>
     <loc>https://automateforge.io/en/contact</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- PL pages -->
-  <url>
-    <loc>https://automateforge.io/pl/</loc>
-    <xhtml:link rel="alternate" hreflang="pl" href="https://automateforge.io/pl/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://automateforge.io/en/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://automateforge.io/pl/products</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://automateforge.io/pl/ksef</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://automateforge.io/pl/agents</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://automateforge.io/pl/templates</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://automateforge.io/pl/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://automateforge.io/pl/contact</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://automateforge.io/en/legal</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 
 </urlset>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { getLangFromPath, type Lang } from '@/i18n';
 
 const STORAGE_KEY = 'af-cookie-consent';
+const GA_ID = 'G-VY53W8Y8ZG';
 
 const copy: Record<Lang, { text: string; link: string; linkLabel: string; decline: string; accept: string }> = {
   en: {
@@ -12,13 +13,32 @@ const copy: Record<Lang, { text: string; link: string; linkLabel: string; declin
     accept: 'Accept',
   },
   pl: {
-    text: 'Używamy plików cookie do analityki (Google Analytics). Kontynuując, zgadzasz się z naszą',
+    text: 'Uzywamy plikow cookie do analityki (Google Analytics). Kontynuujac, zgadzasz sie z nasza',
     link: '/pl/regulamin',
-    linkLabel: 'Polityką Prywatności',
-    decline: 'Odrzuć',
-    accept: 'Akceptuję',
+    linkLabel: 'Polityka Prywatnosci',
+    decline: 'Odrzuc',
+    accept: 'Akceptuje',
   },
 };
+
+function loadGA() {
+  // Only load GA script if not already loaded
+  if (document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${GA_ID}"]`)) return;
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+  document.head.appendChild(script);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(...args: unknown[]) { window.dataLayer.push(args); }
+  gtag('js', new Date());
+  gtag('config', GA_ID, { anonymize_ip: true });
+}
+
+declare global {
+  interface Window {
+    dataLayer: unknown[];
+  }
+}
 
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
@@ -26,20 +46,24 @@ export default function CookieConsent() {
 
   useEffect(() => {
     const consent = localStorage.getItem(STORAGE_KEY);
-    if (!consent) setVisible(true);
+    if (!consent) {
+      setVisible(true);
+    } else if (consent === 'accepted') {
+      // User previously accepted — load GA
+      loadGA();
+    }
     setLang(getLangFromPath(window.location.pathname));
   }, []);
 
   const accept = () => {
     localStorage.setItem(STORAGE_KEY, 'accepted');
     setVisible(false);
+    loadGA();
   };
 
   const decline = () => {
     localStorage.setItem(STORAGE_KEY, 'declined');
     setVisible(false);
-    // Disable GA4 if user declines
-    window[`ga-disable-G-VY53W8Y8ZG` as keyof Window] = true as never;
   };
 
   if (!visible) return null;

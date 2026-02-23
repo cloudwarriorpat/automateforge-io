@@ -1,5 +1,5 @@
-import { Link, useRouterState } from '@tanstack/react-router';
-import { Menu, X, Globe } from 'lucide-react';
+import { Link } from '@tanstack/react-router';
+import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { type Lang } from '@/i18n';
 
@@ -9,36 +9,25 @@ interface NavbarProps {
 
 export default function Navbar({ lang }: NavbarProps) {
   const [open, setOpen] = useState(false);
-  const router = useRouterState();
-  const path = router.location.pathname;
-
-  const switchPath = lang === 'en'
-    ? path.replace(/^\/en/, '/pl').replace(/\/products/, '/uslugi').replace(/\/about/, '/o-nas').replace(/\/legal/, '/regulamin').replace(/\/contact/, '/kontakt').replace(/\/ksef/, '/ksef').replace(/\/ai-agents/, '/agenci').replace(/\/templates/, '/szablony') || '/pl'
-    : path.replace(/^\/pl/, '/en').replace(/\/uslugi/, '/products').replace(/\/o-nas/, '/about').replace(/\/regulamin/, '/legal').replace(/\/kontakt/, '/contact').replace(/\/ksef/, '/ksef').replace(/\/agenci/, '/ai-agents').replace(/\/szablony/, '/templates') || '/en';
 
   const links = lang === 'en'
     ? [
         { to: '/en', label: 'Home' },
-        { to: '/en/products', label: 'Products' },
-        { to: '/en/ksef', label: 'KSeF' },
-        { to: '/en/ai-agents', label: 'AI Agents' },
+        { to: '/en/services', label: 'Services' },
+        { to: '/en/ai-agents', label: 'AI Integration' },
+        { to: '/en/process-audit', label: 'Process Audit' },
         { to: '/en/templates', label: 'Templates' },
         { to: '/en/about', label: 'About' },
         { to: '/en/contact', label: 'Contact' },
       ]
     : [
-        { to: '/pl', label: 'Strona główna' },
-        { to: '/pl/uslugi', label: 'Usługi' },
-        { to: '/pl/ksef', label: 'KSeF' },
-        { to: '/pl/agenci', label: 'Agenci' },
-        { to: '/pl/szablony', label: 'Szablony' },
+        { to: '/pl', label: 'Strona glowna' },
+        { to: '/pl/uslugi', label: 'Uslugi' },
         { to: '/pl/o-nas', label: 'O nas' },
         { to: '/pl/kontakt', label: 'Kontakt' },
       ];
 
   const contactPath = lang === 'en' ? '/en/contact' : '/pl/kontakt';
-  const langLabel = lang === 'en' ? 'PL' : 'EN';
-  const langName = lang === 'en' ? 'Polski' : 'English';
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
@@ -51,7 +40,7 @@ export default function Navbar({ lang }: NavbarProps) {
               </span>
               <div className="leading-tight">
                 <div className="text-sm font-bold tracking-wide text-steel-50">AutomateForge</div>
-                <div className="text-[11px] uppercase tracking-[0.2em] text-steel-500">{lang === 'en' ? 'Studio .io' : 'Studio .pl'}</div>
+                <div className="text-[11px] uppercase tracking-[0.2em] text-steel-500">Automation Services</div>
               </div>
             </Link>
 
@@ -70,15 +59,9 @@ export default function Navbar({ lang }: NavbarProps) {
                 ))}
               </div>
 
-              <div className="flex items-center gap-2">
-                <Link to={switchPath} className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-white/10 text-sm font-medium text-steel-300 hover:text-steel-50 hover:border-white/20 transition-colors">
-                  <Globe className="w-4 h-4" />
-                  {langLabel}
-                </Link>
-                <Link to={contactPath} className="cta-primary px-4 py-2 text-sm">
-                  {lang === 'en' ? 'Book Call' : 'Umów rozmowę'}
-                </Link>
-              </div>
+              <Link to={contactPath} className="cta-primary px-4 py-2 text-sm">
+                {lang === 'en' ? 'Book Call' : 'Kontakt'}
+              </Link>
             </div>
 
             <button
@@ -106,16 +89,8 @@ export default function Navbar({ lang }: NavbarProps) {
                 </Link>
               ))}
 
-              <div className="pt-2 grid grid-cols-2 gap-3">
-                <Link
-                  to={switchPath}
-                  className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-white/10 px-3 py-2 text-sm font-medium text-steel-300 hover:text-steel-50 transition-colors"
-                  onClick={() => setOpen(false)}
-                >
-                  <Globe className="w-4 h-4" />
-                  {langName}
-                </Link>
-                <Link to={contactPath} className="cta-primary px-3 py-2 text-sm" onClick={() => setOpen(false)}>
+              <div className="pt-2">
+                <Link to={contactPath} className="cta-primary w-full px-3 py-2 text-sm" onClick={() => setOpen(false)}>
                   {lang === 'en' ? 'Book Call' : 'Kontakt'}
                 </Link>
               </div>

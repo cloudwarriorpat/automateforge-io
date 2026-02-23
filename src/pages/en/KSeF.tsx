@@ -1,26 +1,27 @@
 import { Link } from '@tanstack/react-router';
-import { Server, Bell, FileText, RefreshCw, Lock, BarChart3, CheckCircle2 } from 'lucide-react';
+import { Search, BarChart3, FileText, Zap, CheckCircle2, Target, TrendingUp } from 'lucide-react';
 import SectionHeading from '@/components/SectionHeading';
 
 const FEATURES = [
-  { icon: Server, title: 'ERP/Invoicing Integration', desc: 'We connect your system (SAP, Comarch, Enova, Symfonia, Fakturownia, wFirma, ifirma) with KSeF 2.0. Bidirectional sync with full validation.' },
-  { icon: Bell, title: 'Monitoring & Alerts', desc: 'Real-time invoice status tracking in KSeF. Instant notifications for rejections and errors.' },
-  { icon: FileText, title: 'JPK/VAT Validation', desc: 'Automatic data consistency check before submission. Invoice references, checksums, schema compliance.' },
-  { icon: RefreshCw, title: 'Rejection Recovery', desc: 'Automatic analysis of rejection causes, data correction, and retry submission.' },
-  { icon: Lock, title: 'Security & Audit', desc: 'Complete operation log, token encryption, access control. Ready for tax authority audit.' },
-  { icon: BarChart3, title: 'Reports & BI', desc: 'Dashboard with metrics: invoice volume, processing time, rejection rate.' },
+  { icon: Search, title: 'Workflow Mapping', desc: 'We interview your team and document every step of your key processes — inputs, outputs, handoffs, decision points, and time spent.' },
+  { icon: BarChart3, title: 'Automation Scoring', desc: 'Each workflow gets scored on automation potential: frequency, complexity, error rate, and business impact.' },
+  { icon: Target, title: 'ROI Projections', desc: 'Estimated time saved, cost reduction, and error elimination for each automation opportunity.' },
+  { icon: FileText, title: 'Tool Recommendations', desc: 'We recommend the right tool for each workflow: Make.com, n8n, Zapier, custom scripts, or AI agents.' },
+  { icon: Zap, title: 'Quick Wins Identified', desc: 'Immediate automation opportunities that can deliver results within the first week of implementation.' },
+  { icon: TrendingUp, title: 'Strategic Roadmap', desc: 'A phased implementation plan with dependencies, resource requirements, and expected milestones.' },
 ];
 
-const TIMELINE = [
-  { date: 'February 1, 2026', event: 'KSeF mandatory for large taxpayers', status: 'active' },
-  { date: 'April 1, 2026', event: 'SMEs — Your deadline', status: 'upcoming' },
-  { date: 'Mid-2026', event: 'Micro-enterprises and others', status: 'upcoming' },
+const PROCESS = [
+  { step: '1', title: 'Kickoff & Scoping', desc: 'We align on goals, identify key processes, and schedule stakeholder interviews.' },
+  { step: '2', title: 'Process Interviews', desc: '30-minute sessions with process owners. We map the real workflow, not the documented one.' },
+  { step: '3', title: 'Analysis & Scoring', desc: 'We score each process on automation potential and model the expected ROI.' },
+  { step: '4', title: 'Roadmap Delivery', desc: 'Prioritized automation roadmap with executive summary, delivered in a 60-minute review session.' },
 ];
 
 const PRICING = [
-  { name: 'Start', price: '€1,900', monthly: '€250', desc: 'For companies with one invoicing system.', features: ['1 ERP/KSeF integration', 'Basic monitoring', 'JPK validation', 'Email alerts', 'Documentation'], highlight: false },
-  { name: 'Business', price: '€5,900', monthly: '€750', desc: 'For companies with multiple systems and complex processes.', features: ['Up to 3 integrations', '24/7 monitoring', 'Auto-correction of rejections', 'Slack/Teams alerts', 'BI Dashboard', '4h SLA'], highlight: true },
-  { name: 'Enterprise', price: '€14,000', monthly: '€2,000', desc: 'Full KSeF support for corporations.', features: ['Unlimited integrations', 'Dedicated team', '2h SLA', 'Custom reports', 'Training', 'Audit compliance'], highlight: false },
+  { name: 'Quick Scan', price: '€2,000', desc: 'For teams that need a fast assessment of automation opportunities.', features: ['Up to 10 processes mapped', 'Automation scoring matrix', 'Top 5 quick wins identified', 'Tool recommendations', 'Executive summary'], highlight: false },
+  { name: 'Full Audit', price: '€6,500', desc: 'Comprehensive analysis with process redesign and implementation planning.', features: ['Up to 25 processes mapped', 'Full automation scoring', 'Process redesign recommendations', 'ROI projections per workflow', 'Phased implementation roadmap', '1 quick-win automation built'], highlight: true },
+  { name: 'Transformation', price: '€20,000', desc: 'Company-wide audit with strategy, CoE setup, and pilot implementations.', features: ['Up to 50 processes mapped', 'Automation strategy document', 'Center of Excellence framework', 'Tool platform setup', '3 pilot automations built', 'Team training (2 days)', 'Quarterly review retainer'], highlight: false },
 ];
 
 export default function EnKSeF() {
@@ -30,27 +31,27 @@ export default function EnKSeF() {
       <section className="px-4 pb-20">
         <div className="max-w-4xl mx-auto text-center">
           <span className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 mb-6">
-            2026 Deadline — Don't Wait
+            Know before you build
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">KSeF Studio</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Process Audit & Optimization</h1>
           <p className="text-xl text-steel-400 max-w-2xl mx-auto">
-            Full integration with Polish National e-Invoicing System. From implementation to monitoring and compliance.
+            Map your workflows, find the bottlenecks, and get a prioritized automation roadmap with clear ROI projections. Stop guessing what to automate first.
           </p>
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* Process */}
       <section className="px-4 pb-20">
-        <div className="max-w-3xl mx-auto">
-          <SectionHeading title="KSeF Timeline" subtitle="Key dates you can't miss." />
-          <div className="space-y-4">
-            {TIMELINE.map((t) => (
-              <div key={t.date} className={`glass-card p-6 flex items-center gap-4 ${t.status === 'active' ? 'border-emerald-500/30' : ''}`}>
-                <div className={`w-3 h-3 rounded-full ${t.status === 'active' ? 'bg-emerald-400' : 'bg-steel-600'}`} />
-                <div>
-                  <div className="font-semibold text-white">{t.date}</div>
-                  <div className="text-sm text-steel-400">{t.event}</div>
+        <div className="max-w-5xl mx-auto">
+          <SectionHeading title="How the Audit Works" subtitle="A structured process that turns operational chaos into a clear automation plan." />
+          <div className="grid md:grid-cols-4 gap-6">
+            {PROCESS.map((p) => (
+              <div key={p.step} className="glass-card p-6 text-center">
+                <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400 text-lg font-bold mx-auto mb-3">
+                  {p.step}
                 </div>
+                <h3 className="text-lg font-semibold text-white mb-2">{p.title}</h3>
+                <p className="text-sm text-steel-400">{p.desc}</p>
               </div>
             ))}
           </div>
@@ -60,7 +61,7 @@ export default function EnKSeF() {
       {/* Features */}
       <section className="px-4 pb-20 bg-white/[0.02] py-20">
         <div className="max-w-7xl mx-auto">
-          <SectionHeading title="What We Deliver" subtitle="Complete KSeF solution — from A to Z." />
+          <SectionHeading title="What You Get" subtitle="Actionable deliverables, not another slide deck." />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {FEATURES.map((f) => {
               const Icon = f.icon;
@@ -87,9 +88,8 @@ export default function EnKSeF() {
                 <h3 className="text-2xl font-bold text-white mt-1">{p.name}</h3>
                 <div className="mt-4 mb-2">
                   <span className="text-3xl font-bold text-white">{p.price}</span>
-                  <span className="text-sm text-steel-400"> one-time</span>
+                  <span className="text-sm text-steel-400"> fixed</span>
                 </div>
-                <div className="text-sm text-steel-400 mb-6">+ {p.monthly}/month maintenance</div>
                 <p className="text-sm text-steel-400 mb-6">{p.desc}</p>
                 <ul className="space-y-3 mb-8">
                   {p.features.map((f) => (
@@ -99,7 +99,7 @@ export default function EnKSeF() {
                   ))}
                 </ul>
                 <Link to="/en/contact" className={`block text-center py-3 rounded-xl font-medium transition-colors ${p.highlight ? 'bg-brand-500 hover:bg-brand-600 text-white' : 'border border-white/20 hover:border-white/40 text-white'}`}>
-                  Schedule a Call
+                  Book Discovery Call
                 </Link>
               </div>
             ))}

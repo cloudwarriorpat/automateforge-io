@@ -10,8 +10,8 @@ export default function EnProductDetail() {
   if (!product) {
     return (
       <div className="pt-32 pb-20 px-4 text-center">
-        <h1 className="text-2xl font-bold text-white mb-4">Product not found</h1>
-        <Link to="/en/products" className="text-brand-400 hover:text-brand-300">← Back to products</Link>
+        <h1 className="text-2xl font-bold text-white mb-4">Service not found</h1>
+        <Link to="/en/services" className="text-brand-400 hover:text-brand-300">&larr; Back to services</Link>
       </div>
     );
   }
@@ -19,18 +19,18 @@ export default function EnProductDetail() {
   return (
     <div className="pt-24 pb-20 px-4">
       <div className="max-w-4xl mx-auto">
-        <Link to="/en/products" className="inline-flex items-center gap-2 text-steel-400 hover:text-white mb-8 transition-colors">
-          <ArrowLeft className="w-4 h-4" /> All Products
+        <Link to="/en/services" className="inline-flex items-center gap-2 text-steel-400 hover:text-white mb-8 transition-colors">
+          <ArrowLeft className="w-4 h-4" /> All Services
         </Link>
 
         {/* Header */}
         <div className="mb-12">
-          <span className="text-xs text-brand-400 font-medium uppercase tracking-wider">{product.categoryLabel} · {product.tierLabel}</span>
+          <span className="text-xs text-brand-400 font-medium uppercase tracking-wider">{product.categoryLabel} &middot; {product.tierLabel}</span>
           <h1 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-3">{product.name}</h1>
           <p className="text-xl text-steel-400">{product.tagline}</p>
           <div className="flex flex-wrap items-center gap-4 sm:gap-6 mt-6">
             <div className="glass-card px-5 py-3 sm:px-6">
-              <div className="text-sm text-steel-400">Price</div>
+              <div className="text-sm text-steel-400">Starting at</div>
               <div className="text-xl sm:text-2xl font-bold text-white">{product.priceEur}</div>
             </div>
             <div className="glass-card px-5 py-3 sm:px-6">
@@ -91,9 +91,9 @@ export default function EnProductDetail() {
         {/* CTA */}
         <div className="text-center glass-card p-8">
           <h2 className="text-2xl font-bold text-white mb-3">Ready to get started?</h2>
-          <p className="text-steel-400 mb-6">Book a free scoping call. No commitment.</p>
+          <p className="text-steel-400 mb-6">Book a free 30-minute discovery call. No commitment.</p>
           <Link to="/en/contact" className="inline-flex items-center gap-2 px-8 py-3 bg-brand-500 hover:bg-brand-600 text-white font-medium rounded-xl transition-colors">
-            Book a Call
+            Book Discovery Call
           </Link>
         </div>
       </div>
