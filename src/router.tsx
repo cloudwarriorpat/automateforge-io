@@ -1,5 +1,5 @@
 import { createRouter, createRoute, createRootRoute, redirect, Outlet, Link } from '@tanstack/react-router';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import type { Lang } from '@/i18n';
@@ -40,12 +40,24 @@ function NotFound() {
   );
 }
 
+function PageLoader() {
+  return (
+    <div className="flex items-center justify-center min-h-[60vh]">
+      <div className="h-8 w-8 animate-spin rounded-full border-2 border-steel-700 border-t-brand-400" />
+    </div>
+  );
+}
+
 function LazyPage({ children }: { children: React.ReactNode }) {
-  return <Suspense fallback={null}>{children}</Suspense>;
+  return <Suspense fallback={<PageLoader />}>{children}</Suspense>;
 }
 
 // Layout component
 function LangLayout({ lang }: { lang: Lang }) {
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
   return (
     <div className="site-shell">
       <div className="site-content min-h-screen flex flex-col">
